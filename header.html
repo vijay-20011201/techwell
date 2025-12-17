@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechWell - Build Your IT Career</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            padding-top: 120px;
+        }
+
+        /* TOP UTILITY BAR */
+        .top-bar {
+            background: #1a202c;
+            color: #e2e8f0;
+            font-size: 14px;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .top-bar.scrolled {
+            padding: 6px 0;
+        }
+
+        .top-bar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-left, .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .top-bar a {
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .top-bar a:hover {
+            color: #3b82f6;
+        }
+
+        .top-bar i {
+            margin-right: 6px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            font-size: 16px;
+        }
+
+        /* MAIN NAVIGATION BAR */
+        .main-nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            position: fixed;
+            top: 44px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .main-nav.scrolled {
+            top: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a202c;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        /* NAVIGATION MENU */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-menu > li {
+            position: relative;
+        }
+
+        .nav-menu > li > a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+
+        .nav-menu > li > a:hover {
+            color: #3b82f6;
+        }
+
+        .nav-menu > li > a i {
+            font-size: 10px;
+        }
+
+        /* DROPDOWN MENUS */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            border-radius: 8px;
+            padding: 20px;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .nav-menu > li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            color: #4a5568;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .dropdown-menu a:hover {
+            background: #eff6ff;
+            color: #3b82f6;
+            padding-left: 20px;
+        }
+
+        /* MEGA DROPDOWN FOR COURSES */
+        .mega-dropdown {
+            min-width: 700px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .mega-column h4 {
+            color: #1a202c;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mega-column a {
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+
+        /* CTA BUTTON */
+        .cta-button {
+            background: #3b82f6;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        /* MOBILE MENU */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #1a202c;
+            cursor: pointer;
+        }
+
+        /* DEMO CONTENT */
+        .demo-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .demo-content h1 {
+            font-size: 36px;
+            color: #1a202c;
+            margin-bottom: 20px;
+        }
+
+        .demo-content p {
+            font-size: 18px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 968px) {
+            body {
+                padding-top: 100px;
+            }
+
+            .top-bar-left span:not(.phone) {
+                display: none;
+            }
+
+            .top-bar-right .location {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 114px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 114px);
+                background: white;
+                flex-direction: column;
+                padding: 30px;
+                gap: 0;
+                overflow-y: auto;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu > li {
+                width: 100%;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .nav-menu > li > a {
+                padding: 18px 0;
+                font-size: 16px;
+                justify-content: space-between;
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding: 10px 0 10px 20px;
+                margin-top: 0;
+                display: none;
+            }
+
+            .nav-menu > li.active .dropdown-menu {
+                display: block;
+            }
+
+            .mega-dropdown {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                min-width: auto;
+            }
+
+            .cta-button {
+                width: 100%;
+                margin-top: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- TOP UTILITY BAR -->
+    <div class="top-bar" id="topBar">
+        <div class="top-bar-content">
+            <div class="top-bar-left">
+                <a href="tel:+919876543210" class="phone">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+91 98765 43210</span>
+                </a>
+                <a href="mailto:info@techwell.com">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@techwell.com</span>
+                </a>
+            </div>
+            <div class="top-bar-right">
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <span class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Bangalore, India
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION BAR -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                Tech<span>Well</span>
+            </a>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li>
+                    <a href="#">
+                        Courses <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu mega-dropdown">
+                        <div class="mega-column">
+                            <h4>Software</h4>
+                            <a href="#">Java Programming</a>
+                            <a href="#">Python Programming</a>
+                            <a href="#">Software Testing</a>
+                            <a href="#">DevOps</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Infrastructure</h4>
+                            <a href="#">Linux Administration</a>
+                            <a href="#">Hardware & Networking</a>
+                            <a href="#">Data Center Operations</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Security & Business</h4>
+                            <a href="#">Cyber Security</a>
+                            <a href="#">Tally + MS Office</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        Internship <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="#">Internship Programs</a>
+                        <a href="#">Live Internships</a>
+                        <a href="#">Internship with Certificate</a>
+                        <a href="#">Apply for Internship</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        Jobs <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="#">Fresher Jobs</a>
+                        <a href="#">Experienced Jobs</a>
+                        <a href="#">Placement Assistance</a>
+                        <a href="#">Upload Resume</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        Projects <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="#">Final Year Projects</a>
+                        <a href="#">Live Projects</a>
+                        <a href="#">Case Studies</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+                <li>
+                    <!--<a href="#" class="cta-button">Apply Now</a>-->
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+        // Sticky header scroll effect
+        const topBar = document.getElementById('topBar');
+        const mainNav = document.getElementById('mainNav');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                topBar.classList.add('scrolled');
+                mainNav.classList.add('scrolled');
+            } else {
+                topBar.classList.remove('scrolled');
+                mainNav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Mobile dropdown toggle
+        const navItems = document.querySelectorAll('.nav-menu > li');
+        
+        navItems.forEach(item => {
+            const link = item.querySelector('a');
+            const dropdown = item.querySelector('.dropdown-menu');
+            
+            if (dropdown && window.innerWidth <= 968) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    item.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

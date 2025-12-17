@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechWell - Build Your IT Career</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        /* GRAND LAUNCH POPUP */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-overlay.hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+            color: white;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+
+        .popup-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .popup-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .popup-content h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .popup-content p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .popup-cta {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .popup-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            position: relative;
+            height: 600px;
+            background: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1600') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 32, 44, 0.85), rgba(49, 130, 206, 0.75));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .carousel-slide {
+            display: none;
+            animation: fadeSlide 0.6s ease;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 35px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            border: 2px solid #3b82f6;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #3b82f6;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* QUICK VALUE STRIP */
+        .value-strip {
+            background: #f7fafc;
+            padding: 40px 20px;
+        }
+
+        .value-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .value-item i {
+            font-size: 40px;
+            color: #3b82f6;
+            margin-bottom: 15px;
+        }
+
+        .value-item h3 {
+            font-size: 18px;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+
+        .value-item p {
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 38px;
+            color: #1a202c;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* SERVICE CARDS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-card i {
+            font-size: 45px;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            color: #1a202c;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #4a5568;
+            font-size: 15px;
+        }
+
+        /* COURSE CARDS */
+        .courses-section {
+            background: #f7fafc;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .course-header h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .course-body {
+            padding: 25px;
+        }
+
+        .course-info {
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .info-row i {
+            color: #3b82f6;
+            margin-right: 10px;
+            margin-top: 3px;
+            min-width: 16px;
+        }
+
+        .info-row strong {
+            color: #1a202c;
+            min-width: 100px;
+        }
+
+        .course-footer {
+            padding: 20px 25px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-outline {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #3b82f6;
+            background: transparent;
+            color: #3b82f6;
+            border-radius: 6px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-outline:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-solid {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #3b82f6;
+            background: #3b82f6;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-solid:hover {
+            background: #2563eb;
+            border-color: #2563eb;
+        }
+
+        /* JOURNEY FLOW */
+.journey-section {
+    background: white;
+    padding: 80px 20px;
+}
+
+.journey-flow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 24px;
+    flex-wrap: nowrap; /* 🔥 IMPORTANT */
+}
+
+.journey-step {
+    text-align: center;
+    min-width: 160px;
+}
+
+.step-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    font-size: 30px;
+}
+
+.journey-step h4 {
+    font-size: 18px;
+    color: #1a202c;
+    margin-bottom: 6px;
+}
+
+.journey-step p {
+    font-size: 14px;
+    color: #4a5568;
+}
+
+.journey-arrow {
+    font-size: 28px;
+    color: #3b82f6;
+    margin-top: -20px; /* aligns arrow vertically */
+}
+
+
+        /* WHY SECTION */
+        .why-section {
+            background: #f7fafc;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .why-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .why-card i {
+            font-size: 50px;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+
+        .why-card h3 {
+            font-size: 20px;
+            color: #1a202c;
+            margin-bottom: 10px;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 25px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .courses-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-arrow {
+                display: none;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header"></div>
+    <!-- GRAND LAUNCH POPUP -->
+    <div class="popup-overlay" id="launchPopup">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="popup-icon">
+                🎉
+            </div>
+            <h2>Grand Launch Today!</h2>
+            <p>Join thousands starting their IT career journey. Special offers available for early enrollments!</p>
+            <button class="popup-cta" onclick="closePopup()">Explore Courses</button>
+        </div>
+    </div>
+
+    <!-- HERO SECTION WITH CAROUSEL -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="carousel-slide active">
+                <h1>🚀 Build Your IT Career with Industry-Ready Skills</h1>
+                <p>Training • Internships • Final Year Projects • Jobs • Placements</p>
+            </div>
+            <div class="carousel-slide">
+                <h1>🎓 Job-Oriented IT Courses with Placement Support</h1>
+                <p>Java, Python, DevOps, Cyber Security, Linux, Testing & More</p>
+            </div>
+            <div class="carousel-slide">
+                <h1>🛠 Learn with Live Internships & Real-Time Projects</h1>
+                <p>Hands-on exposure that employers value</p>
+            </div>
+            <div class="carousel-slide">
+                <h1>💼 From Learning to Earning</h1>
+                <p>Salary packages up to 15 LPA based on skills & role</p>
+            </div>
+            <div class="carousel-slide">
+                <h1>🌟 Trusted Training Partner for Students & Professionals</h1>
+                <p>Career-focused learning with expert mentors</p>
+            </div>
+            <div class="hero-buttons">
+                <a href="#courses" class="btn-primary">Explore Courses</a>
+                <a href="#contact" class="btn-secondary">Apply Now</a>
+            </div>
+        </div>
+        <div class="carousel-dots">
+            <span class="dot active" onclick="setSlide(0)"></span>
+            <span class="dot" onclick="setSlide(1)"></span>
+            <span class="dot" onclick="setSlide(2)"></span>
+            <span class="dot" onclick="setSlide(3)"></span>
+            <span class="dot" onclick="setSlide(4)"></span>
+        </div>
+    </section>
+
+    <!-- QUICK VALUE STRIP -->
+    <div class="value-strip">
+        <div class="value-container">
+            <div class="value-item">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Industry Aligned Curriculum</h3>
+            </div>
+            <div class="value-item">
+                <i class="fas fa-certificate"></i>
+                <h3>Internship with Certification</h3>
+            </div>
+            <div class="value-item">
+                <i class="fas fa-project-diagram"></i>
+                <h3>Live Projects</h3>
+            </div>
+            <div class="value-item">
+                <i class="fas fa-briefcase"></i>
+                <h3>Placement Assistance</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- OUR SERVICES -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>What We Offer</h2>
+                <p>TechWell delivers complete career solutions for students and professionals through structured training, internships, projects, and job assistance.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Training Programs</h3>
+                    <p>Industry-focused IT training designed to meet real-world job requirements.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Internships</h3>
+                    <p>Practical internship programs with real-time exposure and certification.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-folder-open"></i>
+                    <h3>Final Year Projects</h3>
+                    <p>End-to-end project guidance including documentation and implementation.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Placement Assistance</h3>
+                    <p>Resume building, mock interviews, and placement support.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Job Opportunities</h3>
+                    <p>Access to fresher and experienced job openings through our hiring network.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Business Consulting</h3>
+                    <p>IT consulting services for businesses and startups.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES SECTION -->
+    <section class="courses-section" id="courses">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Job-Oriented Courses</h2>
+                <p>Carefully designed programs aligned with current industry demand.</p>
+            </div>
+            <div class="courses-grid">
+                <!-- Java Programming -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>☕ Java Programming</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-info">
+                            <div class="info-row">
+                                <i class="fas fa-clock"></i>
+                                <strong>Duration:</strong>
+                                <span>3–4 Months</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-user-graduate"></i>
+                                <strong>Eligibility:</strong>
+                                <span>Any Graduate / Diploma / B.Tech</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-book"></i>
+                                <strong>Topics:</strong>
+                                <span>Core Java, OOP, Collections, Multithreading, JDBC, Spring Boot, Mini Project</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-rupee-sign"></i>
+                                <strong>Salary:</strong>
+                                <span>₹3–8 LPA</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-briefcase"></i>
+                                <strong>Job Roles:</strong>
+                                <span>Java Developer, Software Engineer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <a href="#" class="btn-outline">View Details</a>
+                        <a href="#" class="btn-solid">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- Linux Administration -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>🐧 Linux Administration</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-info">
+                            <div class="info-row">
+                                <i class="fas fa-clock"></i>
+                                <strong>Duration:</strong>
+                                <span>2–3 Months</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-user-graduate"></i>
+                                <strong>Eligibility:</strong>
+                                <span>Any Graduate / IT Students</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-book"></i>
+                                <strong>Topics:</strong>
+                                <span>Linux Installation, Users, Permissions, Shell Scripting</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-rupee-sign"></i>
+                                <strong>Salary:</strong>
+                                <span>₹4–8 LPA</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-briefcase"></i>
+                                <strong>Job Roles:</strong>
+                                <span>Linux Admin, System Administrator</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <a href="#" class="btn-outline">View Details</a>
+                        <a href="#" class="btn-solid">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- DevOps -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>☁ DevOps</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-info">
+                            <div class="info-row">
+                                <i class="fas fa-clock"></i>
+                                <strong>Duration:</strong>
+                                <span>4–5 Months</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-user-graduate"></i>
+                                <strong>Eligibility:</strong>
+                                <span>IT Graduates</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-book"></i>
+                                <strong>Topics:</strong>
+                                <span>Git, Jenkins, Docker, Kubernetes, AWS Basics</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-rupee-sign"></i>
+                                <strong>Salary:</strong>
+                                <span>₹6–15 LPA</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-briefcase"></i>
+                                <strong>Job Roles:</strong>
+                                <span>DevOps Engineer, Cloud Engineer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <a href="#" class="btn-outline">View Details</a>
+                        <a href="#" class="btn-solid">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- Software Testing -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>🧪 Software Testing</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-info">
+                            <div class="info-row">
+                                <i class="fas fa-clock"></i>
+                                <strong>Duration:</strong>
+                                <span>2.5–3 Months</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-user-graduate"></i>
+                                <strong>Eligibility:</strong>
+                                <span>Any Graduate</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-book"></i>
+                                <strong>Topics:</strong>
+                                <span>Manual Testing, Selenium, JIRA, API Testing</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-rupee-sign"></i>
+                                <strong>Salary:</strong>
+                                <span>₹3–6 LPA</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-briefcase"></i>
+                                <strong>Job Roles:</strong>
+                                <span>QA Engineer, Software Tester</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <a href="#" class="btn-outline">View Details</a>
+                        <a href="#" class="btn-solid">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- Tally + MS Office -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>📊 Tally + MS Office</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-info">
+                            <div class="info-row">
+                                <i class="fas fa-clock"></i>
+                                <strong>Duration:</strong>
+                                <span>2–2.5 Months</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-user-graduate"></i>
+                                <strong>Eligibility:</strong>
+                                <span>Any Graduate / Commerce</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-book"></i>
+                                <strong>Topics:</strong>
+                                <span>Tally Prime, GST, Advanced Excel, Word, PowerPoint</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-rupee-sign"></i>
+                                <strong>Salary:</strong>
+                                <span>₹2–4.5 LPA</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-briefcase"></i>
+                                <strong>Job Roles:</strong>
+                                <span>Accountant, Office Executive</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <a href="#" class="btn-outline">View Details</a>
+                        <a href="#" class="btn-solid">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- Python Programming -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>🐍 Python Programming</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-info">
+                            <div class="info-row">
+                                <i class="fas fa-clock"></i>
+                                <strong>Duration:</strong>
+                                <span>2.5–3 Months</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-user-graduate"></i>
+                                <strong>Eligibility:</strong>
+                                <span>Any Graduate / Freshers</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-book"></i>
+                                <strong>Topics:</strong>
+                                <span>Python Basics, OOP, File Handling, Django Basics, Automation</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-rupee-sign"></i>
+                                <strong>Salary:</strong>
+                                <span>₹3–7 LPA</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-briefcase"></i>
+                                <strong>Job Roles:</strong>
+                                <span>Python Developer, Automation Engineer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <a href="#" class="btn-outline">View Details</a>
+                        <a href="#" class="btn-solid">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- Hardware & Networking -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>🖥 Hardware & Networking</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-info">
+                            <div class="info-row">
+                                <i class="fas fa-clock"></i>
+                                <strong>Duration:</strong>
+                                <span>2–3 Months</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-user-graduate"></i>
+                                <strong>Eligibility:</strong>
+                                <span>Any Graduate / Diploma / +2</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-book"></i>
+                                <strong>Topics:</strong>
+                                <span>Hardware Troubleshooting, Networking, IP, Routers, Switches</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-rupee-sign"></i>
+                                <strong>Salary:</strong>
+                                <span>₹2–4.5 LPA</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-briefcase"></i>
+                                <strong>Job Roles:</strong>
+                                <span>Desktop Support, IT Support Engineer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <a href="#" class="btn-outline">View Details</a>
+                        <a href="#" class="btn-solid">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- Cyber Security -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>🔐 Cyber Security</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-info">
+                            <div class="info-row">
+                                <i class="fas fa-clock"></i>
+                                <strong>Duration:</strong>
+                                <span>3–4 Months</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-user-graduate"></i>
+                                <strong>Eligibility:</strong>
+                                <span>Any Graduate / IT Preferred</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-book"></i>
+                                <strong>Topics:</strong>
+                                <span>Security Basics, Ethical Hacking, SOC, SIEM, VAPT</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-rupee-sign"></i>
+                                <strong>Salary:</strong>
+                                <span>₹4–10 LPA</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-briefcase"></i>
+                                <strong>Job Roles:</strong>
+                                <span>SOC Analyst, Security Analyst</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <a href="#" class="btn-outline">View Details</a>
+                        <a href="#" class="btn-solid">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- Data Center Operations -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>🏢 Data Center Operations</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-info">
+                            <div class="info-row">
+                                <i class="fas fa-clock"></i>
+                                <strong>Duration:</strong>
+                                <span>2–3 Months</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-user-graduate"></i>
+                                <strong>Eligibility:</strong>
+                                <span>Any Graduate / Diploma</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-book"></i>
+                                <strong>Topics:</strong>
+                                <span>Server Basics, Rack & Stack, Monitoring, Backup</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-rupee-sign"></i>
+                                <strong>Salary:</strong>
+                                <span>₹2.5–5 LPA</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-briefcase"></i>
+                                <strong>Job Roles:</strong>
+                                <span>Data Center Engineer, NOC Engineer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <a href="#" class="btn-outline">View Details</a>
+                        <a href="#" class="btn-solid">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YOUR LEARNING JOURNEY -->
+    <section class="journey-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your Learning Journey</h2>
+                <p>A simple, step-by-step path from enrollment to employment.</p>
+            </div>
+            <div class="journey-flow">
+                <div class="journey-step">
+                    <div class="step-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h4>Enroll</h4>
+                    <p>Choose your course</p>
+                </div>
+                <div class="journey-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="journey-step">
+                    <div class="step-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h4>Learn</h4>
+                    <p>Attend live sessions</p>
+                </div>
+                <div class="journey-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="journey-step">
+                    <div class="step-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h4>Practice</h4>
+                    <p>Work on projects</p>
+                </div>
+                <div class="journey-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="journey-step">
+                    <div class="step-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4>Certify</h4>
+                    <p>Get certified</p>
+                </div>
+                <div class="journey-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="journey-step">
+                    <div class="step-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h4>Get Placed</h4>
+                    <p>Start your career</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose TechWell?</h2>
+                <p>We are committed to making you job-ready with skills, certification, and support.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Expert Trainers</h3>
+                    <p>Learn from industry professionals with real-world experience.</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-laptop"></i>
+                    <h3>Hands-On Learning</h3>
+                    <p>Practical training with live projects and internships.</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Small Batch Sizes</h3>
+                    <p>Personalized attention with limited students per batch.</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Flexible Timings</h3>
+                    <p>Weekend and evening batches available for working professionals.</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Industry Certification</h3>
+                    <p>Recognized certificates that add value to your resume.</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>100% Placement Support</h3>
+                    <p>Resume building, interview prep, and job referrals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Transform Your Career?</h2>
+            <p>Join hundreds of students who have successfully launched their IT careers with us.</p>
+            <a href="#courses" class="btn-primary" style="display: inline-block;">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer"></div>
+
+    <script>
+        // Function to load external HTML files
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load ' + filePath);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                    
+                    // Re-execute scripts if any (for mobile menu functionality)
+                    const scripts = document.getElementById(elementId).getElementsByTagName('script');
+                    for (let i = 0; i < scripts.length; i++) {
+                        eval(scripts[i].innerHTML);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading HTML:', error);
+                });
+        }
+
+        // Load header and footer on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            loadHTML('header', 'header.html');
+            loadHTML('footer', 'footer.html');
+        });
+
+        // Optional: Function to load different pages dynamically
+        function loadPage(page) {
+            loadHTML('main-content', page + '.html');
+        }
+
+
+        // Popup functionality
+        function closePopup() {
+            document.getElementById('launchPopup').classList.add('hidden');
+        }
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+            });
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function setSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance carousel every 4 seconds
+        setInterval(nextSlide, 4000);
+
+        // Close popup automatically after 8 seconds
+        setTimeout(closePopup, 8000);
+    </script>
+</body>
+</html>

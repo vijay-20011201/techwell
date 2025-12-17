@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechWell Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Demo Content Area */
+        .demo-content {
+            flex: 1;
+            background: #f7fafc;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .demo-content h1 {
+            color: #1a202c;
+            margin-bottom: 20px;
+        }
+
+        /* FOOTER CTA STRIP */
+        .footer-cta-strip {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .footer-cta-content h3 {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-cta-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .footer-cta-btn {
+            display: inline-block;
+            background: white;
+            color: #2563eb;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .footer-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* MAIN FOOTER */
+        .main-footer {
+            background: #1a365d;
+            color: #cbd5e0;
+            padding: 60px 20px 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        /* Brand Section */
+        .footer-section h3 {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-description {
+            color: #cbd5e0;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .footer-tagline {
+            color: #90cdf4;
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        /* Social Media */
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #cbd5e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Footer Links */
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #3b82f6;
+            padding-left: 5px;
+        }
+
+        /* Contact Info */
+        .footer-contact {
+            list-style: none;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .footer-contact i {
+            color: #3b82f6;
+            margin-right: 12px;
+            margin-top: 3px;
+            min-width: 18px;
+            font-size: 16px;
+        }
+
+        .footer-contact a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: #3b82f6;
+        }
+
+        /* COPYRIGHT BAR */
+        .copyright-bar {
+            background: #0f2744;
+            padding: 25px 20px;
+        }
+
+        .copyright-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .copyright-content p {
+            color: #90cdf4;
+            font-size: 14px;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .legal-links a {
+            color: #90cdf4;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .legal-links a:hover {
+            color: #3b82f6;
+        }
+
+        .legal-links span {
+            color: #4a5568;
+        }
+        .niyan-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.niyan-link:hover {
+    text-decoration: underline; /* optional, still white */
+}
+
+
+        /* TABLET RESPONSIVE */
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .footer-cta-content h3 {
+                font-size: 24px;
+            }
+
+            .footer-cta-content p {
+                font-size: 16px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-contact li {
+                justify-content: center;
+            }
+
+            .copyright-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .legal-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MAIN FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand & About -->
+                <div class="footer-section">
+                    <h3>TechWell</h3>
+                    <p class="footer-description">
+                        TechWell is a professional IT training and business consulting platform delivering job-oriented courses, internships, final year projects, and placement assistance.
+                    </p>
+                    <p class="footer-tagline">Empowering Careers. Enabling Businesses.</p>
+                    
+                    <!-- Social Media -->
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <!-- Courses -->
+                <div class="footer-section">
+                    <h4>Courses</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Java Programming</a></li>
+                        <li><a href="#">Python Programming</a></li>
+                        <li><a href="#">DevOps</a></li>
+                        <li><a href="#">Cyber Security</a></li>
+                        <li><a href="#">Software Testing</a></li>
+                        <li><a href="#">Linux Administration</a></li>
+                        <li><a href="#">Hardware & Networking</a></li>
+                        <li><a href="#">Data Center Operations</a></li>
+                        <li><a href="#">Tally + MS Office</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services & Careers -->
+                <div class="footer-section">
+                    <h4>Services & Careers</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Training Programs</a></li>
+                        <li><a href="#">Internship Programs</a></li>
+                        <li><a href="#">Final Year Projects</a></li>
+                        <li><a href="#">Placement Assistance</a></li>
+                        <li><a href="#">Job Opportunities</a></li>
+                        <li><a href="#">Business Consulting</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bengaluru, Karnataka, India</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+919876543210">+91 98765 43210</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@techwell.com">info@techwell.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/919876543210" target="_blank">WhatsApp Support</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- COPYRIGHT BAR -->
+<div class="copyright-bar">
+    <div class="container">
+        <div class="copyright-content">
+            <p>
+                © 2025 Designed With ❤️ By 
+                <a href="https://niyanitsolutions.com" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="niyan-link">
+                    NIYAN IT SOLUTIONS
+                </a>. All Rights Reserved.
+            </p>
+
+            <div class="legal-links">
+                <a href="#" class="legal-link">Privacy Policy</a>
+                <span>•</span>
+                <a href="#" class="legal-link">Terms & Conditions</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
