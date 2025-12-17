@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Coming Soon | TechWell</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* OVERLAY */
+.update-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* MODAL */
+.update-modal {
+    background: #ffffff;
+    width: 100%;
+    max-width: 460px;
+    border-radius: 14px;
+    padding: 32px 28px;
+    position: relative;
+    text-align: center;
+    animation: scaleIn 0.3s ease;
+}
+
+/* CLOSE BUTTON */
+.update-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+/* ICON */
+.update-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 30px;
+    margin: 0 auto 18px;
+}
+
+/* CONTENT */
+.update-modal h2 {
+    font-size: 22px;
+    color: #0a2540;
+    margin-bottom: 10px;
+}
+
+.update-modal p {
+    font-size: 15px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* BUTTON */
+.update-btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .update-modal {
+        margin: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- UPDATE MODAL -->
+<div class="update-overlay">
+    <div class="update-modal">
+        <span class="update-close" onclick="goHome()">✕</span>
+
+        <div class="update-icon">🚀</div>
+
+        <h2>We’re Launching Today!</h2>
+        <p>
+            Today is our launch day 🎉  
+            We’re actively working on this section and will roll it out very soon.  
+            Thank you for your patience and support.
+        </p>
+
+        <button class="update-btn" onclick="goHome()">Go Back to Home</button>
+    </div>
+</div>
+
+<script>
+function goHome() {
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

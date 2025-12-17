@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Enroll Now | TechWell</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* MODAL OVERLAY */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* MODAL BOX */
+.modal {
+    background: #ffffff;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 12px;
+    padding: 30px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+/* CLOSE ICON */
+.modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #555;
+}
+
+/* HEADING */
+.modal h2 {
+    text-align: center;
+    margin-bottom: 8px;
+    color: #0a2540;
+}
+
+.modal p {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 14px;
+}
+
+/* FORM */
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+textarea {
+    resize: none;
+}
+
+/* BUTTONS */
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    flex: 1;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn-cancel {
+    flex: 1;
+    background: #e5e7eb;
+    color: #111;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* MOBILE */
+@media(max-width: 480px) {
+    .modal {
+        margin: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MODAL -->
+<div class="modal-overlay">
+    <div class="modal">
+        <span class="modal-close" onclick="goHome()">✕</span>
+
+        <h2>Enroll Now</h2>
+        <p>Fill in your details and our team will contact you</p>
+
+        <form id="enrollForm">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Full Name" required>
+            </div>
+
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" name="phone" placeholder="Mobile Number" required>
+            </div>
+
+            <div class="form-group">
+                <select name="course" required>
+                    <option value="">Select Course</option>
+                    <option>Java Programming</option>
+                    <option>Python Programming</option>
+                    <option>DevOps</option>
+                    <option>Cyber Security</option>
+                    <option>Linux Administration</option>
+                    <option>Software Testing</option>
+                    <option>Hardware & Networking</option>
+                    <option>Data Center Operations</option>
+                    <option>Tally + MS Office</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <textarea name="message" rows="3" placeholder="Your message (optional)"></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Submit</button>
+                <button type="button" class="btn-cancel" onclick="goHome()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+/* EMAILJS INIT */
+(function(){
+    emailjs.init("YOUR_PUBLIC_KEY"); // 🔴 replace
+})();
+
+/* FORM SUBMIT */
+document.getElementById("enrollForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    emailjs.sendForm(
+        "YOUR_SERVICE_ID",   // 🔴 replace
+        "YOUR_TEMPLATE_ID",  // 🔴 replace
+        this
+    ).then(function(){
+        alert("Thank you! We will contact you soon.");
+        window.location.href = "index.html";
+    }, function(error){
+        alert("Failed to send. Please try again.");
+        console.error(error);
+    });
+});
+
+/* CLOSE / CANCEL */
+function goHome() {
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

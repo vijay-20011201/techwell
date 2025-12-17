@@ -100,18 +100,19 @@
             height: 70px;
         }
 
-        .logo {
-            font-size: 26px;
-            font-weight: 700;
-            color: #1a202c;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
+        
+        .logo img {
+    height: 75px;          /* Adjust as needed */
+    width: auto;
+    display: block;
+}
 
-        .logo span {
-            color: #3b82f6;
-        }
+@media (max-width: 768px) {
+    .logo img {
+        height: 34px;
+    }
+}
+
 
         /* NAVIGATION MENU */
         .nav-menu {
@@ -236,25 +237,7 @@
             cursor: pointer;
         }
 
-        /* DEMO CONTENT */
-        .demo-content {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .demo-content h1 {
-            font-size: 36px;
-            color: #1a202c;
-            margin-bottom: 20px;
-        }
-
-        .demo-content p {
-            font-size: 18px;
-            color: #4a5568;
-            line-height: 1.6;
-        }
-
+    
         /* MOBILE RESPONSIVE */
         @media (max-width: 968px) {
             body {
@@ -338,7 +321,7 @@
             <div class="top-bar-left">
                 <a href="tel:+919876543210" class="phone">
                     <i class="fas fa-phone-alt"></i>
-                    <span>+91 98765 43210</span>
+                    <span>+91 7997473473</span>
                 </a>
                 <a href="mailto:info@techwell.com">
                     <i class="fas fa-envelope"></i>
@@ -348,12 +331,12 @@
             <div class="top-bar-right">
                 <div class="social-links">
                     <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/techwell_official/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/techwellbusiness/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                 </div>
                 <span class="location">
                     <i class="fas fa-map-marker-alt"></i>
-                    Bangalore, India
+                    1st floor, TECHWELL, Womens College Rd, opp.LIC Office, Srikakulam
                 </span>
             </div>
         </div>
@@ -362,9 +345,9 @@
     <!-- MAIN NAVIGATION BAR -->
     <nav class="main-nav" id="mainNav">
         <div class="nav-content">
-            <a href="#" class="logo">
-                Tech<span>Well</span>
-            </a>
+            <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="TechWell Logo">
+        </a>
 
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
