@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master DevOps Engineering | TechWell</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+            background: #f8fafc;
+        }
+
+        /* Hero Section */
+        .course-hero {
+            padding: 100px 20px 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 30px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meta-item i {
+            color: #00A9CE;
+            font-size: 20px;
+        }
+
+        .meta-item span {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 169, 206, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 16px 32px;
+            background: white;
+            color: #00A9CE;
+            border: 2px solid #00A9CE;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #00A9CE;
+            color: white;
+        }
+
+        .hero-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overview Section */
+        .overview {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .overview-card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid #00A9CE;
+            transition: all 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 169, 206, 0.15);
+        }
+
+        .overview-card i {
+            font-size: 32px;
+            color: #00A9CE;
+            margin-bottom: 15px;
+        }
+
+        .overview-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .overview-card p {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #f8fafc, #ffffff);
+        }
+
+        .module {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .module-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .module-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .module-title h3 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .module-duration {
+            background: #00A9CE;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .module-description {
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .topics-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: #e0f2fe;
+            transform: translateX(5px);
+        }
+
+        .topic-item i {
+            color: #00A9CE;
+            font-size: 16px;
+        }
+
+        .topic-item span {
+            font-size: 15px;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .module-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="course-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Master <span class="hero-highlight">DevOps</span> Engineering</h1>
+                
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span><strong>6 Months</strong> Duration</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span><strong>Small Batches</strong> (15-20 students)</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-certificate"></i>
+                        <span><strong>Industry Certificate</strong></span>
+                    </div>
+                </div>
+
+                <p class="hero-description">
+                    Become a certified DevOps Engineer with hands-on training in CI/CD, containerization, orchestration, cloud platforms, Infrastructure as Code, and monitoring. Build real-world pipelines and get 100% placement assistance.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="enroll.html" class="btn-primary">Enroll Now</a>
+                    <a href="#curriculum" class="btn-secondary">View Curriculum</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=80" alt="DevOps Engineering">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Course Overview</h2>
+                <p>A comprehensive 6-month program covering everything from version control to advanced cloud-native DevOps practices</p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>CI/CD Pipelines</h3>
+                    <p>Master Jenkins, GitLab CI, GitHub Actions, and automated deployment workflows</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fab fa-docker"></i>
+                    <h3>Containerization</h3>
+                    <p>Learn Docker, Kubernetes, Helm, and container security best practices</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud Platforms</h3>
+                    <p>Deploy on AWS, Azure, and GCP with hands-on cloud-native architecture</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Infrastructure as Code</h3>
+                    <p>Automate infrastructure with Terraform, Ansible, and CloudFormation</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Monitoring</h3>
+                    <p>Implement Prometheus, Grafana, ELK Stack, and distributed tracing</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Placement Support</h3>
+                    <p>Resume building, mock interviews, and job referrals to top tech companies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum" id="curriculum">
+        <div class="container">
+            <div class="section-header">
+                <h2>Detailed Curriculum</h2>
+                <p>Structured learning path from fundamentals to advanced DevOps engineering practices</p>
+            </div>
+
+            <!-- Module 1 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">01</div>
+                        <h3>DevOps Fundamentals & Linux</h3>
+                    </div>
+                    <div class="module-duration">3 Weeks</div>
+                </div>
+                <p class="module-description">Build a strong foundation in DevOps culture, Linux administration, and command-line proficiency essential for DevOps engineers.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>DevOps Culture & Principles</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Linux Command Line Essentials</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>File Systems & Permissions</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>User & Process Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Shell Scripting & Automation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Package Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>System Monitoring Basics</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Networking Fundamentals</span></div>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">02</div>
+                        <h3>Version Control & Git</h3>
+                    </div>
+                    <div class="module-duration">2 Weeks</div>
+                </div>
+                <p class="module-description">Master Git and version control workflows for collaborative development and CI/CD integration.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Git Fundamentals & Commands</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Branching & Merging Strategies</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Git Workflows (GitFlow, Trunk-Based)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>GitHub, GitLab, Bitbucket</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Pull Requests & Code Reviews</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Git Hooks & Automation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Conflict Resolution</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Git Best Practices</span></div>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">03</div>
+                        <h3>CI/CD & Build Automation</h3>
+                    </div>
+                    <div class="module-duration">1.5 Months</div>
+                </div>
+                <p class="module-description">Build automated CI/CD pipelines using Jenkins, GitLab CI, GitHub Actions, and other industry-standard tools.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>CI/CD Concepts & Pipeline Design</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Jenkins Architecture & Setup</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Jenkins Pipelines (Declarative & Scripted)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>GitLab CI/CD Pipelines</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>GitHub Actions Workflows</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Build Tools (Maven, Gradle, npm)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Automated Testing Integration</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Artifact Management (Nexus, JFrog)</span></div>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">04</div>
+                        <h3>Containerization with Docker</h3>
+                    </div>
+                    <div class="module-duration">1 Month</div>
+                </div>
+                <p class="module-description">Master Docker containerization, image management, networking, and best practices for building production-ready containers.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Docker Architecture & Installation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Docker Images & Containers</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Dockerfile Best Practices</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Docker Networking</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Docker Volumes & Storage</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Docker Compose</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Container Security</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Docker Registry & Harbor</span></div>
+                </div>
+            </div>
+
+            <!-- Module 5 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">05</div>
+                        <h3>Kubernetes & Container Orchestration</h3>
+                    </div>
+                    <div class="module-duration">1.5 Months</div>
+                </div>
+                <p class="module-description">Deploy and manage containerized applications at scale using Kubernetes, the industry-standard orchestration platform.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Kubernetes Architecture & Components</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Pods, Deployments, & Services</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>ConfigMaps & Secrets Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Persistent Volumes & Storage</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Ingress & Load Balancing</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Helm Package Manager</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Auto-scaling & Self-Healing</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>K8s Security & RBAC</span></div>
+                </div>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">06</div>
+                        <h3>Infrastructure as Code (IaC)</h3>
+                    </div>
+                    <div class="module-duration">1 Month</div>
+                </div>
+                <p class="module-description">Automate infrastructure provisioning and configuration using Terraform, Ansible, and cloud-native IaC tools.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>IaC Principles & Benefits</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Terraform Fundamentals</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Terraform Modules & State Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Multi-Cloud Provisioning</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Ansible Architecture & Playbooks</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Configuration Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>AWS CloudFormation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>IaC Best Practices & GitOps</span></div>
+                </div>
+            </div>
+
+            <!-- Module 7 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">07</div>
+                        <h3>Cloud Platforms & Services</h3>
+                    </div>
+                    <div class="module-duration">1 Month</div>
+                </div>
+                <p class="module-description">Deploy applications on AWS, Azure, and GCP with hands-on experience in cloud-native services and architectures.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>AWS EC2, S3, VPC & IAM</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>AWS ECS, EKS, & Lambda</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Azure Virtual Machines & AKS</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>GCP Compute Engine & GKE</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Cloud Networking & Security</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Serverless Architecture</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Cloud Cost Optimization</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Multi-Cloud Strategies</span></div>
+                </div>
+            </div>
+
+            <!-- Module 8 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">08</div>
+                        <h3>Monitoring, Logging & Observability</h3>
+                    </div>
+                    <div class="module-duration">3 Weeks</div>
+                </div>
+                <p class="module-description">Implement comprehensive monitoring, logging, and observability solutions for production environments.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Prometheus & Alerting</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Grafana Dashboards</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>ELK Stack (Elasticsearch, Logstash, Kibana)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Centralized Logging</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Application Performance Monitoring</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Distributed Tracing (Jaeger)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Metrics & KPIs</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Incident Response & On-Call</span></div>
+                </div>
+            </div>
+
+            <!-- Module 9 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">09</div>
+                        <h3>Security & Compliance (DevSecOps)</h3>
+                    </div>
+                    <div class="module-duration">2 Weeks</div>
+                </div>
+                <p class="module-description">Integrate security practices into the DevOps lifecycle with automated security scanning and compliance.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>DevSecOps Principles</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Container Security Scanning</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>SAST & DAST Tools</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Secrets Management (Vault, AWS Secrets)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Security in CI/CD Pipelines</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Compliance & Governance</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Vulnerability Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Zero Trust Architecture</span></div>
+                </div>
+            </div>
+
+            <!-- Module 10 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">10</div>
+                        <h3>Capstone Projects & Placement Prep</h3>
+                    </div>
+                    <div class="module-duration">3 Weeks</div>
+                </div>
+                <p class="module-description">Build end-to-end DevOps pipelines for real-world applications and prepare for interviews with comprehensive placement training.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Microservices CI/CD Pipeline</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Multi-Cloud Kubernetes Deployment</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Infrastructure Automation Project</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Full Observability Stack Setup</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>DevOps Scenario-Based Questions</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Resume Building for DevOps</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Mock Technical Interviews</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Job Referrals & Career Guidance</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer"></div>
+
+    <script>
+        // Load header and footer
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+</html>

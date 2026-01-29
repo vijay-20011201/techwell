@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Services - Office 365, Google Workspace & Support | Niyan IT Solutions</title>
+    <meta name="description" content="Professional email services including Office 365, Google Workspace migration, setup, security, and 24/7 support for businesses.">
+    <link rel="canonical" href="https://niyanitsolutions.com/email-services.html">
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.95;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #1e3a8a;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hero-btn.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .hero-btn.secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 2rem;
+            background: white;
+            border: 2px solid #ddd;
+            color: #666;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+
+        .tab-btn.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Service Cards */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: #1e3a8a;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-card ul li {
+            padding: 0.5rem 0;
+            color: #555;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .service-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .service-card ul li:before {
+            content: "✓";
+            color: #3b82f6;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-box {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .feature-box h4 {
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-box p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Security Section */
+        .security {
+            padding: 5rem 2rem;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .security .section-title {
+            color: white;
+        }
+
+        .security .section-subtitle {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .security-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .security-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .security-card p {
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: #1e3a8a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Professional Email Services for Your Business</h1>
+            <p>Office 365, Google Workspace migration, setup, security, and 24/7 support. Reliable email solutions tailored to your business needs.</p>
+            <a href="contactform.html" class="hero-btn">Get Started</a>
+            <a href="#services" class="hero-btn secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Email Solutions</h2>
+                <p class="section-subtitle">Choose the right email platform for your business with expert migration and ongoing support</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('office365')">Office 365</button>
+                <button class="tab-btn" onclick="switchTab('google')">Google Workspace</button>
+                <button class="tab-btn" onclick="switchTab('support')">Email Support</button>
+            </div>
+
+            <!-- Office 365 -->
+            <div id="office365" class="tab-content active">
+                <div class="service-grid">
+                    <div class="service-card">
+                        <h3>Migration & Setup</h3>
+                        <p>Seamless migration from your existing email system to Office 365 with zero downtime.</p>
+                        <ul>
+                            <li>Complete mailbox migration</li>
+                            <li>Domain configuration</li>
+                            <li>DNS setup</li>
+                            <li>User training</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Administration</h3>
+                        <p>Centralized management of users, licenses, and security policies.</p>
+                        <ul>
+                            <li>User account management</li>
+                            <li>License allocation</li>
+                            <li>Security settings</li>
+                            <li>Access control</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Security & Compliance</h3>
+                        <p>Enterprise-grade security with advanced threat protection.</p>
+                        <ul>
+                            <li>Anti-malware protection</li>
+                            <li>Email encryption</li>
+                            <li>Data loss prevention</li>
+                            <li>Compliance management</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Support & Maintenance</h3>
+                        <p>24/7 technical support and proactive system monitoring.</p>
+                        <ul>
+                            <li>Round-the-clock support</li>
+                            <li>Issue resolution</li>
+                            <li>Performance monitoring</li>
+                            <li>Backup & recovery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Workspace -->
+            <div id="google" class="tab-content">
+                <div class="service-grid">
+                    <div class="service-card">
+                        <h3>Migration Services</h3>
+                        <p>Complete migration to Google Workspace with data integrity guaranteed.</p>
+                        <ul>
+                            <li>Email & calendar migration</li>
+                            <li>Document transfer</li>
+                            <li>MX record setup</li>
+                            <li>Account provisioning</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Collaboration Tools</h3>
+                        <p>Access Google's suite of productivity and collaboration tools.</p>
+                        <ul>
+                            <li>Gmail for business</li>
+                            <li>Google Meet</li>
+                            <li>Google Drive</li>
+                            <li>Docs, Sheets, Slides</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Security Management</h3>
+                        <p>Enterprise security with centralized admin controls.</p>
+                        <ul>
+                            <li>Admin console access</li>
+                            <li>Two-factor authentication</li>
+                            <li>Mobile device management</li>
+                            <li>Security policies</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Training & Support</h3>
+                        <p>Comprehensive training and ongoing technical support.</p>
+                        <ul>
+                            <li>User training sessions</li>
+                            <li>24/7 helpdesk</li>
+                            <li>System integration</li>
+                            <li>Performance optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Support -->
+            <div id="support" class="tab-content">
+                <div class="service-grid">
+                    <div class="service-card">
+                        <h3>Email Setup</h3>
+                        <p>Professional configuration of email systems and clients.</p>
+                        <ul>
+                            <li>Domain & DNS setup</li>
+                            <li>Email client configuration</li>
+                            <li>SMTP/IMAP settings</li>
+                            <li>Email forwarding</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Troubleshooting</h3>
+                        <p>Quick resolution of email delivery and access issues.</p>
+                        <ul>
+                            <li>Delivery failures</li>
+                            <li>Spam filtering</li>
+                            <li>Sync problems</li>
+                            <li>Access issues</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Backup & Security</h3>
+                        <p>Data protection with automated backups and encryption.</p>
+                        <ul>
+                            <li>Automated backups</li>
+                            <li>Email encryption</li>
+                            <li>Archive solutions</li>
+                            <li>Malware protection</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>24/7 Helpdesk</h3>
+                        <p>Always-available technical support for your team.</p>
+                        <ul>
+                            <li>Ticket support system</li>
+                            <li>Real-time monitoring</li>
+                            <li>Priority response</li>
+                            <li>Regular maintenance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Our Email Services</h2>
+                <p class="section-subtitle">Professional, reliable, and secure email solutions for businesses of all sizes</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h4>Zero Downtime</h4>
+                    <p>Seamless migration without interrupting your business operations</p>
+                </div>
+                <div class="feature-box">
+                    <h4>Expert Support</h4>
+                    <p>Certified professionals available 24/7 for assistance</p>
+                </div>
+                <div class="feature-box">
+                    <h4>Data Security</h4>
+                    <p>Enterprise-grade encryption and threat protection</p>
+                </div>
+                <div class="feature-box">
+                    <h4>99.9% Uptime</h4>
+                    <p>Guaranteed reliability with service level agreements</p>
+                </div>
+                <div class="feature-box">
+                    <h4>Scalable Solutions</h4>
+                    <p>Grow your email infrastructure as your business expands</p>
+                </div>
+                <div class="feature-box">
+                    <h4>Compliance Ready</h4>
+                    <p>Meet industry standards including GDPR and HIPAA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security -->
+    <section class="security">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Enterprise Security & Compliance</h2>
+                <p class="section-subtitle">Protect your business communications with industry-leading security measures</p>
+            </div>
+            <div class="security-grid">
+                <div class="security-card">
+                    <h4>Advanced Threat Protection</h4>
+                    <p>Real-time protection against malware, phishing, ransomware, and other cyber threats with advanced filtering and monitoring.</p>
+                </div>
+                <div class="security-card">
+                    <h4>Data Encryption</h4>
+                    <p>End-to-end encryption for all email communications, ensuring your sensitive business data remains secure and confidential.</p>
+                </div>
+                <div class="security-card">
+                    <h4>Regulatory Compliance</h4>
+                    <p>Full compliance with GDPR, HIPAA, ISO standards, and other industry regulations to meet your compliance requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today to discuss your email needs and find the perfect solution for your business.</p>
+            <a href="contactform.html" class="hero-btn">Contact Us Now</a>
+        </div>
+    </section>
+
+    <div class="scroll-top" id="scrollTop">↑</div>
+    <div id="footer"></div>
+
+    <script>
+        function switchTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+
+        scrollBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        fetch("header.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+                initializeMobileMenu();
+            });
+
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer").innerHTML = data;
+            });
+
+        function initializeMobileMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            if (!menuToggle || !navMenu) {
+                setTimeout(initializeMobileMenu, 100);
+                return;
+            }
+            
+            const newMenuToggle = menuToggle.cloneNode(true);
+            menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle);
+            
+            newMenuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            navItems.forEach(item => {
+                const link = item.querySelector('.nav-link');
+                const dropdown = item.querySelector('.dropdown, .mega-menu');
+                
+                if (dropdown) {
+                    link.addEventListener('click', function(e) {
+                        if (window.innerWidth <= 768) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            
+                            navItems.forEach(otherItem => {
+                                if (otherItem !== item) {
+                                    otherItem.classList.remove('active');
+                                }
+                            });
+                            
+                            item.classList.toggle('active');
+                        }
+                    });
+                }
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768 && 
+                    !e.target.closest('.nav-container') && 
+                    navMenu.classList.contains('active')) {
+                    newMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+            
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    newMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    navItems.forEach(item => item.classList.remove('active'));
+                }
+            });
+        }
+    </script>
+</body>
+</html>

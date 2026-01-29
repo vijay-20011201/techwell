@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | TechWell</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --gradient-main: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            --gradient-card: linear-gradient(145deg, #ffffff, #f1f5f9);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .reveal {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        /* --- Hero Section --- */
+        .page-hero {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #bae6fd;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(to right, #60a5fa, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- Section Common --- */
+        section { padding: 60px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+       
+        .mv-section {
+            background: linear-gradient(to bottom, #f8fafc, #eff6ff);
+            position: relative;
+            padding: 60px 20px;
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mv-card {
+            position: relative;
+            height: 320px;
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .mv-card:hover { transform: translateY(-10px) scale(1.02); }
+
+        .mv-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.8s ease;
+        }
+
+        .mv-card:hover .mv-bg { transform: scale(1.1); }
+
+        .mv-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.4), transparent);
+            z-index: 1;
+        }
+
+        .mv-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .mv-card:hover .mv-content { transform: translateY(0); }
+
+        .mv-icon-box {
+            width: 70px; height: 70px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #60a5fa;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .mv-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #fff, #93c5fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .mv-text {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 90%;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .mv-grid { grid-template-columns: 1fr; }
+            .mv-card { height: 400px; }
+        }
+
+        /* --- Hypothecation (Special Feature) --- */
+        .hypo-section {
+            background: var(--primary);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hypo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Ambient bg effect */
+        .hypo-section::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 60%);
+            animation: float 10s infinite alternate;
+        }
+
+        .hypo-content { flex: 1; }
+
+        .hypo-badge {
+            color: #fbbf24;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .hypo-title {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .hypo-desc {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        .hypo-visual {
+            flex: 0.8;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .seal-icon {
+            font-size: 5rem;
+            color: #fbbf24;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.4));
+        }
+
+        /* --- History & Achievements (Timeline) --- */
+        .history-section { background: #fff; }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #e2e8f0;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            width: 100%;
+            position: relative;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 30px;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #f1f5f9;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content { margin-left: auto; }
+        .timeline-item:nth-child(odd) .timeline-content { margin-right: auto; }
+
+        .timeline-year {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .t-title { font-weight: 700; font-size: 1.25rem; margin-bottom: 10px; color: var(--primary); }
+        .t-desc { color: var(--text-light); font-size: 0.95rem; }
+
+        /* --- Our Team (Grid) --- */
+        .team-section { background: var(--bg-light); }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            text-align: center;
+            border: 1px solid #f1f5f9;
+        }
+
+        .team-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+
+        .team-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background: #cbd5e1; /* Placeholder fallback */
+        }
+
+        .team-info { padding: 25px; }
+        .team-name { font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-bottom: 5px; }
+        .team-role { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 15px; }
+        .team-social { display: flex; justify-content: center; gap: 15px; }
+        .team-social a { color: var(--text-light); transition: 0.3s; }
+        .team-social a:hover { color: var(--accent); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hypo-wrap { flex-direction: column; text-align: center; }
+            .hypo-desc { border-left: none; padding-left: 0; }
+            .timeline::before { left: 0; }
+            .timeline-content { width: 90%; margin-left: 30px !important; }
+            .timeline-year { left: 0; transform: none; }
+            .hero-title { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <!-- Hero -->
+    <header class="page-hero">
+        <div class="hero-content reveal">
+            <span class="hero-badge">Who We Are</span>
+            <h1 class="hero-title">Driving Innovation <br> <span>Empowering Talent</span></h1>
+            <p class="hero-subtitle">We are a premier technology institute dedicated to shaping the future of digital engineering and creative problem solving.</p>
+        </div>
+    </header>
+
+    <!-- Mission & Vision -->
+    <!-- Mission & Vision -->
+    <section class="mv-section">
+        <div class="container">
+            <div class="mv-grid">
+                <!-- Mission Card -->
+                <div class="mv-card reveal">
+                    <div class="mv-bg" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="mv-overlay"></div>
+                    <div class="mv-content">
+                        <div class="mv-icon-box">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h2 class="mv-title">Our Mission</h2>
+                        <p class="mv-text">To democratize technology education by providing world-class, industry-aligned training that bridges the gap between academic knowledge and professional excellence.</p>
+                    </div>
+                </div>
+
+                <!-- Vision Card -->
+                <div class="mv-card reveal" style="animation-delay: 0.2s;">
+                    <div class="mv-bg" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="mv-overlay"></div>
+                    <div class="mv-content">
+                        <div class="mv-icon-box">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h2 class="mv-title">Our Vision</h2>
+                        <p class="mv-text">To be the global benchmark for technical excellence. We envision a world where every aspiring technologist has access to the resources needed to build impactful solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History -->
+    <section class="history-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>History & Achievements</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <span class="timeline-year">2018</span>
+                    <div class="timeline-content">
+                        <h3 class="t-title">Inception</h3>
+                        <p class="t-desc">TechWell was founded with a small team of 5 engineers and a shared passion for teaching code.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <span class="timeline-year">2020</span>
+                    <div class="timeline-content">
+                        <h3 class="t-title">Digital Transformation</h3>
+                        <p class="t-desc">Launched our online platform, reaching students across 15+ countries during the global shift to remote learning.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <span class="timeline-year">2023</span>
+                    <div class="timeline-content">
+                        <h3 class="t-title">Excellence Award</h3>
+                        <p class="t-desc">Recognized as the "Top Emerging EdTech Startup" for our innovative project-based curriculum.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <span class="timeline-year">2025</span>
+                    <div class="timeline-content">
+                        <h3 class="t-title">10,000+ Alumni</h3>
+                        <p class="t-desc">Celebrated a major milestone of 10,000 successful career transitions facilitated by our programs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hypothecation Section -->
+    <section class="hypo-section">
+        <div class="container">
+            <div class="hypo-wrap">
+                <div class="hypo-content reveal">
+                    <span class="hypo-badge">OUR GUARANTEE</span>
+                    <h2 class="hypo-title">Hypothecation of Quality</h2>
+                    <p class="hypo-desc">
+                        We don't just teach; we pledge our commitment to your success. Our "Hypothecation" to every student is a binding assurance of quality, industry-relevance, and lifelong career support. We pledge our resources, network, and expertise as collateral for your future.
+                    </p>
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 25px;">
+                        <div>
+                            <h4 style="color:white; margin-bottom:5px;">100% Verified</h4>
+                            <p style="color:#94a3b8; font-size:0.9rem;">Curriculum Standards</p>
+                        </div>
+                        <div>
+                            <h4 style="color:white; margin-bottom:5px;">Dedicated</h4>
+                            <p style="color:#94a3b8; font-size:0.9rem;">Placement Support</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="hypo-visual reveal">
+                    <i class="fas fa-certificate seal-icon"></i>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Seal of Excellence</h3>
+                    <p style="color: #cbd5e1; margin-bottom: 24px;">ISO 9001:2015 Certified Education Provider</p>
+                    
+                    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center;">
+                        <p style="color: #fbbf24; font-weight: 600; margin-bottom: 15px; font-size: 0.95rem;">Officially Registered In</p>
+                        <div style="display: flex; gap: 15px; justify-content: center;">
+                            <!-- Placeholders for Logos -->
+                            <div style="background: white; padding: 8px 16px; border-radius: 8px; font-weight: 700; color: #1e293b; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-flag-checkered" style="color: #ea580c;"></i> Skill India
+                            </div>
+                            <div style="background: white; padding: 8px 16px; border-radius: 8px; font-weight: 700; color: #1e293b; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-id-card-alt" style="color: #0284c7;"></i> NCS
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Team</h2>
+            </div>
+            <div class="team-grid">
+                <!-- Member 1 -->
+                <div class="team-card reveal">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800" alt="CEO" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Alex Morgan</h3>
+                        <p class="team-role">Founder & CEO</p>
+                    </div>
+                </div>
+                <!-- Member 2 -->
+                <div class="team-card reveal" style="animation-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="CTO" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Sarah Jenkins</h3>
+                        <p class="team-role">Chief Technology Officer</p>
+                    </div>
+                </div>
+                <!-- Member 3 -->
+                <div class="team-card reveal" style="animation-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800" alt="Head of Education" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">David Chen</h3>
+                        <p class="team-role">Head of Education</p>
+                    </div>
+                </div>
+                <!-- Member 4 -->
+                <div class="team-card reveal" style="animation-delay: 0.3s;">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800" alt="Lead Designer" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Emily Ross</h3>
+                        <p class="team-role">Lead Product Designer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script>
+        // Header & Footer Loader
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => response.text())
+                .then(data => {
+                    const element = document.getElementById(elementId);
+                    if (element) {
+                        element.innerHTML = data;
+                        // Execute scripts in loaded HTML
+                        const scripts = element.getElementsByTagName("script");
+                        for (let i = 0; i < scripts.length; i++) {
+                            const script = document.createElement("script");
+                            if (scripts[i].src) {
+                                script.src = scripts[i].src;
+                                script.async = false;
+                            } else {
+                                script.textContent = scripts[i].textContent;
+                            }
+                            document.body.appendChild(script);
+                        }
+                    }
+                })
+                .catch(error => console.error('Error loading HTML:', error));
+        }
+
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
+    </script>
+</body>
+</html>
