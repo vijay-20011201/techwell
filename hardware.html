@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware & Networking Course | TechWell</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .course-hero {
+            padding: 100px 20px 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 30px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meta-item i {
+            color: #00A9CE;
+            font-size: 20px;
+        }
+
+        .meta-item span {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 169, 206, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 16px 32px;
+            background: white;
+            color: #00A9CE;
+            border: 2px solid #00A9CE;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #00A9CE;
+            color: white;
+        }
+
+        .hero-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overview Section */
+        .overview {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .overview-card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid #00A9CE;
+            transition: all 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 169, 206, 0.15);
+        }
+
+        .overview-card i {
+            font-size: 32px;
+            color: #00A9CE;
+            margin-bottom: 15px;
+        }
+
+        .overview-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .overview-card p {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #f8fafc, #ffffff);
+        }
+
+        .module {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .module-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .module-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .module-title h3 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .module-duration {
+            background: #00A9CE;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .module-description {
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .topics-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: #e0f2fe;
+            transform: translateX(5px);
+        }
+
+        .topic-item i {
+            color: #00A9CE;
+            font-size: 16px;
+        }
+
+        .topic-item span {
+            font-size: 15px;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .module-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="course-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Master <span class="hero-highlight">Hardware & Networking</span></h1>
+                
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span><strong>6 Months</strong> Duration</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span><strong>Small Batches</strong> (15-20 students)</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-certificate"></i>
+                        <span><strong>Industry Certificate</strong></span>
+                    </div>
+                </div>
+
+                <p class="hero-description">
+                    Become a certified Hardware & Network Engineer with hands-on training in computer hardware, networking fundamentals, server administration, network security, and troubleshooting. Build real-world skills and get 100% placement assistance.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="enroll.html" class="btn-primary">Enroll Now</a>
+                    <a href="#curriculum" class="btn-secondary">View Curriculum</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hardware & Networking">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Course Overview</h2>
+                <p>A comprehensive 6-month program covering everything from PC assembly to advanced networking and server management</p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <i class="fas fa-desktop"></i>
+                    <h3>Computer Hardware</h3>
+                    <p>PC assembly, troubleshooting, component upgrades, and hardware maintenance</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Networking Fundamentals</h3>
+                    <p>TCP/IP, OSI model, subnetting, routing, switching, and network protocols</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Network Security</h3>
+                    <p>Firewall configuration, VPN, wireless security, and threat prevention</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-server"></i>
+                    <h3>Server Administration</h3>
+                    <p>Windows Server, Active Directory, DNS, DHCP, and file servers</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Troubleshooting & Support</h3>
+                    <p>Hardware diagnostics, network troubleshooting, and technical support</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Placement Support</h3>
+                    <p>Resume building, mock interviews, and job referrals to IT companies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum" id="curriculum">
+        <div class="container">
+            <div class="section-header">
+                <h2>Detailed Curriculum</h2>
+                <p>Structured learning path from computer basics to advanced networking and server administration</p>
+            </div>
+
+            <!-- Module 1 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">01</div>
+                        <h3>Computer Fundamentals</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1 Week</div>
+                </div>
+                <p class="module-description">
+                    Build a foundation in computer basics, operating systems, and digital literacy essential for IT professionals.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Introduction to Computers</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Computer Components Overview</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Operating System Basics</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>File Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Windows Environment</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Control Panel & Settings</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Software Installation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Keyboard Shortcuts & Tips</span></div>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">02</div>
+                        <h3>Computer Hardware Components</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1 Month</div>
+                </div>
+                <p class="module-description">
+                    Master all computer hardware components including motherboard, processor, RAM, storage devices, and peripherals.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Motherboard Architecture & Types</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>CPU (Processor) Specifications</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>RAM Types & Installation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Hard Disk & SSD Technology</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>SMPS & Power Supply</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Graphics Cards & Display</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Input/Output Devices</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Expansion Cards & Slots</span></div>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">03</div>
+                        <h3>PC Assembly & Troubleshooting</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Learn complete PC assembly from scratch, BIOS configuration, and hardware troubleshooting techniques.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Step-by-Step PC Assembly</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Cable Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>BIOS/UEFI Configuration</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>POST (Power-On Self-Test)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Hardware Diagnostics Tools</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Common Hardware Issues</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Component Replacement</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Preventive Maintenance</span></div>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">04</div>
+                        <h3>OS Installation & Configuration</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 2 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Install and configure Windows and Linux operating systems with partitioning, drivers, and optimization.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Windows 10/11 Installation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Linux (Ubuntu) Installation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Dual Boot Setup</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Disk Partitioning</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Driver Installation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>System Updates & Patches</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>OS Optimization</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Backup & Recovery</span></div>
+                </div>
+            </div>
+
+             <!-- Module 5 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">05</div>
+                        <h3>Networking Fundamentals</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1 Month</div>
+                </div>
+                <p class="module-description">
+                    Learn networking basics including OSI model, TCP/IP, network topologies, and protocols.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Introduction to Networking</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>OSI Model (7 Layers)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>TCP/IP Protocol Suite</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>IP Addressing & Subnetting</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Network Topologies</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Network Devices (Hub, Switch, Router)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>MAC Address & ARP</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Ethernet & Wi-Fi Standards</span></div>
+                </div>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">06</div>
+                        <h3>Network Cabling & Physical Layer</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 2 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Master network cable types, crimping, patch panel installation, and physical network setup.
+                </p>
+                <div class="topics-list">
+                   <div class="topic-item"><i class="fas fa-check-circle"></i><span>UTP, STP, Coaxial Cables</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Cable Categories (Cat5e, Cat6, Cat6a)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>RJ45 Connector Crimping</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Straight-Through & Crossover Cables</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Cable Testing Tools</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Patch Panels & Racks</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Fiber Optic Basics</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Cable Management Best Practices</span></div>
+                </div>
+            </div>
+
+            <!-- Module 7 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">07</div>
+                        <h3>Routing & Switching</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1 Month</div>
+                </div>
+                <p class="module-description">
+                    Configure routers and switches, implement VLANs, and understand routing protocols.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Switch Configuration Basics</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>VLANs & VLAN Trunking</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Spanning Tree Protocol (STP)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Router Configuration</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Static & Dynamic Routing</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>RIP, OSPF, EIGRP Basics</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>NAT & PAT</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Access Control Lists (ACL)</span></div>
+                </div>
+            </div>
+
+            <!-- Module 8 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">08</div>
+                        <h3>Wireless Networking</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 2 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Setup and secure wireless networks including access points, Wi-Fi standards, and security protocols.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Wi-Fi Standards (802.11a/b/g/n/ac/ax)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Wireless Access Point Setup</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>SSID & Channel Configuration</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>WEP, WPA, WPA2, WPA3 Security</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Wireless Range Extenders</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Guest Networks</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Wireless Troubleshooting</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Site Survey & Planning</span></div>
+                </div>
+            </div>
+
+            <!-- Module 9 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">09</div>
+                        <h3>Windows Server Administration</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1 Month</div>
+                </div>
+                <p class="module-description">
+                    Manage Windows Server environments including Active Directory, DNS, DHCP, and file servers.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Windows Server Installation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Active Directory Domain Services</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>User & Group Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>DNS Server Configuration</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>DHCP Server Setup</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>File & Print Servers</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Group Policy Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Server Backup & Recovery</span></div>
+                </div>
+            </div>
+
+             <!-- Module 10 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">10</div>
+                        <h3>Network Security & Firewall</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Implement network security measures including firewalls, VPNs, and intrusion detection systems.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Network Security Fundamentals</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Firewall Configuration</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>VPN (Virtual Private Network)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Proxy Servers</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Antivirus & Anti-malware</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Intrusion Detection Systems (IDS)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Network Monitoring Tools</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Security Best Practices</span></div>
+                </div>
+            </div>
+
+             <!-- Module 11 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">11</div>
+                        <h3>Network Troubleshooting & Tools</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 2 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Master network troubleshooting techniques and diagnostic tools for identifying and resolving issues.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Ping & Traceroute</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>ipconfig & nslookup</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Wireshark Packet Analysis</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Network Mapping Tools</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Bandwidth Monitoring</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Common Network Issues</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Troubleshooting Methodology</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Documentation & Reporting</span></div>
+                </div>
+            </div>
+
+             <!-- Module 12 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">12</div>
+                        <h3>Practical Projects & Placement Prep</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Apply your skills to real-world scenarios and prepare for IT support and networking job interviews.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Complete Network Setup Project</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Server Infrastructure Deployment</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Security Implementation Project</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Troubleshooting Case Studies</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Hardware & Networking Interview Q&A</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Resume Building for IT Support</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Mock Technical Interviews</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Job Referrals & Career Guidance</span></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer"></div>
+
+    <script>
+        // Load header and footer
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+</html>

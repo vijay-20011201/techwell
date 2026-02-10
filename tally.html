@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tally + MS Office Course | TechWell</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .course-hero {
+            padding: 100px 20px 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 30px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meta-item i {
+            color: #00A9CE;
+            font-size: 20px;
+        }
+
+        .meta-item span {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 169, 206, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 16px 32px;
+            background: white;
+            color: #00A9CE;
+            border: 2px solid #00A9CE;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #00A9CE;
+            color: white;
+        }
+
+        .hero-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overview Section */
+        .overview {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .overview-card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid #00A9CE;
+            transition: all 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 169, 206, 0.15);
+        }
+
+        .overview-card i {
+            font-size: 32px;
+            color: #00A9CE;
+            margin-bottom: 15px;
+        }
+
+        .overview-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .overview-card p {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #f8fafc, #ffffff);
+        }
+
+        .module {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .module-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .module-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .module-title h3 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .module-duration {
+            background: #00A9CE;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .module-description {
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .topics-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: #e0f2fe;
+            transform: translateX(5px);
+        }
+
+        .topic-item i {
+            color: #00A9CE;
+            font-size: 16px;
+        }
+
+        .topic-item span {
+            font-size: 15px;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .module-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="course-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Master <span class="hero-highlight">Tally + MS Office</span></h1>
+                
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span><strong>4 Months</strong> Duration</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span><strong>Small Batches</strong> (15-20 students)</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-certificate"></i>
+                        <span><strong>Industry Certificate</strong></span>
+                    </div>
+                </div>
+
+                <p class="hero-description">
+                    Become proficient in accounting and office productivity with comprehensive training in Tally Prime, MS Office Suite (Word, Excel, PowerPoint, Outlook), GST compliance, and financial reporting. Build practical skills and get 100% placement assistance.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="enroll.html" class="btn-primary">Enroll Now</a>
+                    <a href="#curriculum" class="btn-secondary">View Curriculum</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80" alt="Tally and MS Office">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Course Overview</h2>
+                <p>A comprehensive 4-month program covering Tally Prime accounting, GST, and complete MS Office Suite mastery</p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h3>Tally Prime Mastery</h3>
+                    <p>Complete accounting, inventory management, GST compliance, and financial reporting</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-table"></i>
+                    <h3>Advanced Excel</h3>
+                    <p>Formulas, pivot tables, data analysis, macros, and financial modeling</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-file-word"></i>
+                    <h3>MS Word Expert</h3>
+                    <p>Professional documentation, mail merge, templates, and formatting</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-file-powerpoint"></i>
+                    <h3>PowerPoint Pro</h3>
+                    <p>Impactful presentations, animations, templates, and storytelling</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Outlook & Communication</h3>
+                    <p>Email management, calendar scheduling, and professional communication</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Placement Support</h3>
+                    <p>Resume building, mock interviews, and job referrals to accounting firms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum" id="curriculum">
+        <div class="container">
+            <div class="section-header">
+                <h2>Detailed Curriculum</h2>
+                <p>Structured learning path from basics to advanced Tally and MS Office applications</p>
+            </div>
+
+            <!-- Module 1 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">01</div>
+                        <h3>Accounting Fundamentals</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1 Week</div>
+                </div>
+                <p class="module-description">
+                    Build a strong foundation in basic accounting principles, terminology, and concepts essential for Tally.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Introduction to Accounting</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Double Entry System</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Debit & Credit Rules</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Journal Entries</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Ledger Posting</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Trial Balance</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Profit & Loss Account</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Balance Sheet Basics</span></div>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">02</div>
+                        <h3>Tally Prime Fundamentals</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Master Tally Prime interface, company creation, and basic accounting operations.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Tally Prime Installation & Setup</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Company Creation & Configuration</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Creating Ledgers & Groups</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Voucher Entry (Payment, Receipt, Journal)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Sales & Purchase Vouchers</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Bank Reconciliation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Basic Reports Generation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Data Backup & Restore</span></div>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">03</div>
+                        <h3>Inventory Management in Tally</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 2 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Learn complete inventory management including stock tracking, godowns, and stock reports.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Stock Groups & Categories</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Units of Measurement</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Stock Items Creation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Godown & Batch Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Purchase & Sales Orders</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Physical Stock Verification</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Stock Summary Reports</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Reorder Levels & Tracking</span></div>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">04</div>
+                        <h3>GST in Tally Prime</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Master GST compliance, returns filing, and tax calculations in Tally Prime.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>GST Overview & Concepts</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>GST Configuration in Tally</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Tax Ledgers & Groups</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>GST Invoice Creation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>GSTR-1, GSTR-2, GSTR-3B Returns</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Input Tax Credit (ITC)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>E-Way Bills Generation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>GST Reconciliation</span></div>
+                </div>
+            </div>
+
+             <!-- Module 5 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">05</div>
+                        <h3>Advanced Tally Features</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 2 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Explore advanced Tally features including payroll, cost centers, and multi-currency transactions.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Payroll Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Cost Centers & Cost Categories</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Budgets & Scenarios</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Multi-Currency Transactions</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Interest Calculations</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>TDS (Tax Deducted at Source)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Bill-wise Details</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Post-Dated Cheques</span></div>
+                </div>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">06</div>
+                        <h3>MS Word Mastery</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 2 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Create professional documents with advanced formatting, mail merge, and collaboration features.
+                </p>
+                <div class="topics-list">
+                   <div class="topic-item"><i class="fas fa-check-circle"></i><span>Word Interface & Navigation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Text Formatting & Styles</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Tables & Charts</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Headers, Footers & Page Numbers</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Mail Merge</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Templates & Themes</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Track Changes & Comments</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Document Protection</span></div>
+                </div>
+            </div>
+
+            <!-- Module 7 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">07</div>
+                        <h3>MS Excel Advanced</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Master Excel formulas, functions, pivot tables, and data analysis for business intelligence.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Excel Interface & Basics</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Formulas & Functions (VLOOKUP, HLOOKUP)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>IF, SUMIF, COUNTIF Functions</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Pivot Tables & Charts</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Data Validation & Filtering</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Conditional Formatting</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Macros & VBA Basics</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Financial Modeling</span></div>
+                </div>
+            </div>
+
+            <!-- Module 8 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">08</div>
+                        <h3>MS PowerPoint Professional</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1 Week</div>
+                </div>
+                <p class="module-description">
+                    Create impactful presentations with professional design, animations, and storytelling techniques.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>PowerPoint Interface & Layouts</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Slide Design & Themes</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Working with Text & Images</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>SmartArt & Diagrams</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Animations & Transitions</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Master Slides & Templates</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Embedding Media</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Presentation Delivery Tips</span></div>
+                </div>
+            </div>
+
+            <!-- Module 9 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">09</div>
+                        <h3>MS Outlook & Communication</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1 Week</div>
+                </div>
+                <p class="module-description">
+                    Manage emails, calendars, contacts, and tasks efficiently for professional communication.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Email Management Basics</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Organizing with Folders & Rules</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Calendar & Scheduling</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Contacts & Distribution Lists</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Tasks & To-Do Lists</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Email Signatures</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Meeting Invitations</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Email Etiquette</span></div>
+                </div>
+            </div>
+             <!-- Module 10 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">10</div>
+                        <h3>Internet & Digital Literacy</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1 Week</div>
+                </div>
+                <p class="module-description">
+                    Learn essential internet skills, online banking, e-filing, and digital tools for modern workplaces.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Internet Basics & Browsers</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Google Drive & Cloud Storage</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Online Banking & Payments</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>E-Filing (Income Tax, GST)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Digital Signature</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>PDF Tools & Conversion</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Online Collaboration Tools</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Cybersecurity Basics</span></div>
+                </div>
+            </div>
+
+             <!-- Module 11 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">11</div>
+                        <h3>Practical Projects & Case Studies</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 2 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Apply your skills to real-world accounting and office scenarios with hands-on projects.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Complete Company Accounting Project</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>GST Return Filing Practice</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Inventory Management Scenario</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Financial Reports in Excel</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Professional Resume in Word</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Business Presentation Creation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Email Communication Scenarios</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Data Analysis Case Study</span></div>
+                </div>
+            </div>
+
+             <!-- Module 12 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">12</div>
+                        <h3>Interview Preparation & Placement</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1 Week</div>
+                </div>
+                <p class="module-description">
+                    Prepare for accounting and office job interviews with mock sessions and career guidance.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Accounting Interview Questions</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Tally Practical Tests</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Excel Assessment Practice</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Resume Building</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Cover Letter Writing</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Mock Interviews</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Job Search Strategies</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Placement Assistance & Referrals</span></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer"></div>
+
+    <script>
+        // Load header and footer
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+</html>

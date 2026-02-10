@@ -85,7 +85,7 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
             gap: 40px;
             margin-bottom: 30px;
         }
@@ -167,34 +167,97 @@
             padding-left: 5px;
         }
 
-        /* Contact Info */
-        .footer-contact {
-            list-style: none;
+        /* Newsletter Section */
+        .newsletter-section {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
-        .footer-contact li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            font-size: 14px;
+        .newsletter-section h4 {
+            margin-bottom: 12px;
         }
 
-        .footer-contact i {
-            color: #3b82f6;
-            margin-right: 12px;
-            margin-top: 3px;
-            min-width: 18px;
-            font-size: 16px;
-        }
-
-        .footer-contact a {
+        .newsletter-description {
             color: #cbd5e0;
-            text-decoration: none;
-            transition: color 0.3s;
+            font-size: 13px;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
-        .footer-contact a:hover {
-            color: #3b82f6;
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .newsletter-btn {
+            padding: 12px 24px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .newsletter-btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .contact-btn i {
+            font-size: 16px;
         }
 
         /* COPYRIGHT BAR */
@@ -238,16 +301,260 @@
         .legal-links span {
             color: #4a5568;
         }
+
         .niyan-link {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-}
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .niyan-link:hover {
+            text-decoration: underline;
+        }
 
-.niyan-link:hover {
-    text-decoration: underline; /* optional, still white */
-}
+        /* FAB Menu Container */
+        .fab-menu {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
 
+        /* Main FAB Button */
+        .fab-main {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 28px;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fab-main:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .fab-main.active {
+            transform: rotate(45deg);
+        }
+
+        .fab-main i {
+            transition: all 0.3s ease;
+        }
+
+        /* FAB Items Container */
+        .fab-items {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        .fab-items.active {
+            pointer-events: auto;
+        }
+
+        /* Individual FAB Items */
+        .fab-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            transform: translateY(20px) scale(0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fab-items.active .fab-item {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .fab-items.active .fab-item:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        .fab-items.active .fab-item:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        /* FAB Item Label */
+        .fab-label {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* WhatsApp Button */
+        .fab-whatsapp {
+            width: 50px;
+            height: 50px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            font-size: 26px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .fab-whatsapp:hover {
+            transform: scale(1.1);
+            background-color: #128c7e;
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Callback Button */
+        .fab-callback {
+            width: 50px;
+            height: 50px;
+            background: #3b82f6;
+            color: #FFF;
+            border-radius: 50%;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fab-callback:hover {
+            transform: scale(1.1);
+            background: #2563eb;
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Footer Popup Styles */
+        .footer-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .footer-popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .footer-popup-content {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .footer-popup-overlay.active .footer-popup-content {
+            transform: translateY(0);
+        }
+
+        .footer-popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #f1f5f9;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            transition: all 0.2s;
+        }
+
+        .footer-popup-close:hover {
+            background: #e2e8f0;
+            color: #ef4444;
+        }
+
+        .popup-form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .popup-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #475569;
+            font-size: 14px;
+        }
+
+        .popup-form-group input,
+        .popup-form-group select,
+        .popup-form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .popup-form-group input:focus,
+        .popup-form-group select:focus,
+        .popup-form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .popup-submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .popup-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
 
         /* TABLET RESPONSIVE */
         @media (max-width: 992px) {
@@ -277,8 +584,12 @@
                 justify-content: center;
             }
 
-            .footer-contact li {
-                justify-content: center;
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-btn {
+                width: 100%;
             }
 
             .copyright-content {
@@ -295,13 +606,92 @@
 </head>
 <body>
 
+    <!-- FAB Menu -->
+    <div class="fab-menu">
+        <!-- Main FAB Button -->
+        <button class="fab-main" onclick="toggleFabMenu()" id="fabMainBtn" aria-label="Open menu">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+
+        <!-- FAB Items -->
+        <div class="fab-items" id="fabItems">
+            <!-- WhatsApp -->
+            <div class="fab-item">
+                <span class="fab-label">Chat on WhatsApp</span>
+                <a href="https://wa.me/917997473473?text=Hello%2C%20I%20wanna%20know%20more%20about%20your%20courses" class="fab-whatsapp" target="_blank" title="Chat on WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <!-- Request Callback -->
+            <div class="fab-item">
+                <span class="fab-label">Request a Call Back</span>
+                <button class="fab-callback" onclick="openCallbackFromFab()" title="Request a Callback">
+                    <i class="fas fa-phone-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Request Callback Popup -->
+    <div class="footer-popup-overlay" id="callbackPopup">
+        <div class="footer-popup-content">
+            <button class="footer-popup-close" onclick="toggleCallbackPopup()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div style="text-align: center; margin-bottom: 24px;">
+                <h3 style="font-size: 24px; font-weight: 700; color: #1e293b; margin-bottom: 8px;">Request a Callback</h3>
+                <p style="color: #64748b; font-size: 14px;">Fill out the form below and we'll get back to you shortly.</p>
+            </div>
+            
+            <form id="callbackForm" onsubmit="handleCallbackSubmit(event)">
+                <div class="popup-form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="popup-form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone" required placeholder="Enter mobile no" pattern="[0-9]{10}">
+                </div>
+
+                <div class="popup-form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" required placeholder="Enter your email">
+                </div>
+
+                <div class="popup-form-group">
+                    <label>Course Interested</label>
+                    <select name="course" required>
+                        <option value="" disabled selected>Select a course</option>
+                        <option value="Java Full Stack">Java Full Stack</option>
+                        <option value="Python Full Stack">Python Full Stack</option>
+                        <option value="DevOps & Cloud">DevOps & Cloud</option>
+                        <option value="Software Testing">Software Testing</option>
+                        <option value="Cyber Security">Cyber Security</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+
+                <div class="popup-form-group">
+                    <label>Message</label>
+                    <textarea name="message" rows="3" placeholder="Enter your message..."></textarea>
+                </div>
+
+                <button type="submit" class="popup-submit-btn">
+                    Submit Request <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- MAIN FOOTER -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
                 <!-- Brand & About -->
                 <div class="footer-section">
-                    <img src="images/logo.png" alt="">
+                    <img src="images/Logo.jpeg" alt="TechWell Logo" style="height: 60px; margin-bottom: 20px;">
                     <p class="footer-description">
                         TechWell is a professional IT training and business consulting platform delivering job-oriented courses, internships, final year projects, and placement assistance.
                     </p>
@@ -337,65 +727,132 @@
                     <ul class="footer-links">
                         <li><a href="#">Training Programs</a></li>
                         <li><a href="#">Internship Programs</a></li>
-                        <li><a href="#">Final Year Projects</a></li>
+                        <li><a href="projects.html">Final Year Projects</a></li>
                         <li><a href="#">Placement Assistance</a></li>
                         <li><a href="#">Job Opportunities</a></li>
                         <li><a href="#">Business Consulting</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact -->
+                <!-- Newsletter & Contact -->
                 <div class="footer-section">
-                    <h4>Contact Us</h4>
-                    <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>1st floor, TECHWELL, Womens College Rd, opp. Life Insurance Corporation Of India (LIC) Office, Srikakulam, Andhra Pradesh-532001, India</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+919876543210">+91 7997473473</a>
-                        </li>
-                        <li>
+                    <div class="newsletter-section">
+                        <h4>Stay Updated</h4>
+                        <p class="newsletter-description">Subscribe to our newsletter for the latest courses, career tips, and tech insights.</p>
+                        
+                        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                            <button type="submit" class="newsletter-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+
+                        <a href="contactus.html" class="contact-btn">
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@techwell.com">info@techwell.com</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
-                        </li>
-                        <li>
-                            <i class="fab fa-whatsapp"></i>
-                            <a href="https://wa.me/917997473473" target="_blank">WhatsApp Support</a>
-                        </li>
-                    </ul>
+                            Contact Us
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- COPYRIGHT BAR -->
-<div class="copyright-bar">
-    <div class="container">
-        <div class="copyright-content">
-            <p>
-                © 2025 Designed With ❤️ By 
-                <a href="https://niyanitsolutions.com" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   class="niyan-link">
-                    NIYAN IT SOLUTIONS
-                </a>. All Rights Reserved.
-            </p>
+    <div class="copyright-bar">
+        <div class="container">
+            <div class="copyright-content">
+                <p>
+                    © 2025 Designed With ❤️ By 
+                    <a href="https://niyanitsolutions.com" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="niyan-link">
+                        NIYAN IT SOLUTIONS
+                    </a>. All Rights Reserved.
+                </p>
 
-            <div class="legal-links">
-                <a href="#" class="legal-link">Privacy Policy</a>
-                <span>•</span>
-                <a href="#" class="legal-link">Terms & Conditions</a>
+                <div class="legal-links">
+                    <a href="#" class="legal-link">Privacy Policy</a>
+                    <span>•</span>
+                    <a href="#" class="legal-link">Terms & Conditions</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <script>
+        function handleNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input').value;
+            alert('Thank you for subscribing! We will send updates to: ' + email);
+            event.target.reset();
+        }
+
+        // FAB Menu Toggle
+        function toggleFabMenu() {
+            const fabItems = document.getElementById('fabItems');
+            const fabMainBtn = document.getElementById('fabMainBtn');
+            
+            fabItems.classList.toggle('active');
+            fabMainBtn.classList.toggle('active');
+        }
+
+        // Open Callback from FAB and close FAB menu
+        function openCallbackFromFab() {
+            toggleFabMenu(); // Close the FAB menu
+            setTimeout(() => {
+                toggleCallbackPopup(); // Open the callback popup
+            }, 300); // Delay to allow FAB menu to close smoothly
+        }
+
+        // Callback Popup Logic
+        function toggleCallbackPopup() {
+            const popup = document.getElementById('callbackPopup');
+            popup.classList.toggle('active');
+            
+            // Prevent body scroll when popup is open
+            if (popup.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('callbackPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleCallbackPopup();
+            }
+        });
+
+        function handleCallbackSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+            btn.disabled = true;
+
+            const formData = {
+                name: form.name.value,
+                phone: form.phone.value,
+                email: form.email.value,
+                course: form.course.value,
+                message: form.message.value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            // Simulate API call or use EmailJS if available in parent
+            setTimeout(() => {
+                alert(`Thank you, ${formData.name}! We have received your request for ${formData.course}. Our team will contact you at ${formData.phone} shortly.`);
+                form.reset();
+                toggleCallbackPopup();
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1500);
+        }
+    </script>
 
 </body>
 </html>

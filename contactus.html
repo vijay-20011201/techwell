@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Elite Training Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<style>
+   /* ========================================
+   1. GLOBAL RESET & BASE STYLES
+========================================
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Montserrat', sans-serif; /* Fallbacks for safety */
+    background-color: #f8f9fa;
+    color: #2d3436;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Typography Overrides */
+h1, h2, h3, h4, .section-title {
+    font-family: 'Playfair Display', 'Cinzel', serif;
+}
+
+.gold-text {
+    color: #3b82f5; /* Primary branding blue */
+}
+
+/* ========================================
+   2. HERO SECTION
+========================================
+*/
+.hero {
+    position: relative;
+    height: 75vh;
+    background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10, 25, 47, 0.95) 0%, rgba(10, 25, 47, 0.7) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.gold-subtitle {
+    display: block;
+    color: #3b82f5;
+    letter-spacing: 5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem); 
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+/* ========================================
+   3. INFO CONTACT BAR
+========================================
+*/
+.info-bar {
+    max-width: 1200px;
+    margin: -70px auto 0;
+    background: #ffffff;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 35px;
+    border-radius: 4px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10;
+    border-top: 5px solid #3b82f5;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 25px;
+    border-right: 1px solid #f0f0f0;
+}
+
+.info-item:last-child {
+    border-right: none;
+}
+
+.icon-circle {
+    min-width: 50px;
+    height: 50px;
+    background: #f0f5ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b82f5;
+    font-size: 1.2rem;
+}
+
+.info-item span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.info-item p {
+    font-weight: 600;
+    color: #0a192f;
+    margin-top: 2px;
+}
+
+/* ========================================
+   4. CONTENT & PERKS
+========================================
+*/
+.main-wrapper {
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 0 25px;
+}
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    color: #0a192f;
+}
+
+.divider {
+    width: 60px;
+    height: 4px;
+    background: #3b82f5;
+    margin: 25px 0;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: #636e72;
+    margin-bottom: 40px;
+    max-width: 500px;
+}
+
+.perk-card {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.perk-card i {
+    font-size: 1.4rem;
+    margin-top: 4px;
+}
+
+.perk-card h4 {
+    color: #0a192f;
+    margin-bottom: 6px;
+    font-size: 1.1rem;
+}
+
+.perk-card p {
+    font-size: 0.95rem;
+    color: #636e72;
+    line-height: 1.5;
+}
+
+/* ========================================
+   5. CONTACT FORM
+========================================
+*/
+.form-container {
+    background: #0a192f;
+    padding: 60px;
+    border-radius: 4px;
+    color: #ffffff;
+    box-shadow: 20px 20px 0px #3b82f5;
+}
+
+.form-header {
+    margin-bottom: 35px;
+}
+
+.form-header h3 {
+    font-size: 1.8rem;
+    color: #3b82f5;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: #8892b0;
+    font-size: 0.9rem;
+}
+
+/* Input Styling */
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.input-full {
+    margin-bottom: 20px;
+}
+
+input, 
+select, 
+textarea {
+    width: 100%;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 3px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+textarea {
+    resize: vertical;
+    margin-bottom: 25px;
+}
+
+input:focus, 
+select:focus, 
+textarea:focus {
+    outline: none;
+    border-color: #3b82f5;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+select option {
+    background: #0a192f;
+    color: #ffffff;
+}
+
+/* Button Styles */
+.gold-btn {
+    width: 100%;
+    padding: 20px;
+    background: #3b82f5;
+    border: none;
+    color: #0a192f;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.gold-btn:hover {
+    background: #5091ff;
+    transform: translateY(-2px);
+}
+
+.gold-btn:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   6. MAP SECTION
+========================================
+*/
+.map-container {
+    position: relative;
+    margin-top: 80px;
+    height: 500px;
+    background: #eee;
+}
+
+.map-overlay-box {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    background: #ffffff;
+    padding: 30px;
+    z-index: 5;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border-left: 5px solid #3b82f5;
+}
+
+.map-overlay-box h4 {
+    margin-bottom: 10px;
+    color: #0a192f;
+}
+
+.map-overlay-box p {
+    font-size: 0.9rem;
+    color: #636e72;
+}
+
+/* ========================================
+   7. RESPONSIVE QUERIES
+========================================
+*/
+@media (max-width: 1024px) {
+    .split-layout {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 968px) {
+    .split-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-bar {
+        grid-template-columns: 1fr;
+        width: 90%;
+        margin-top: -100px;
+        padding: 15px;
+    }
+    
+    .info-item {
+        border-right: none;
+        border-bottom: 1px solid #f0f0f0;
+        padding: 20px 10px;
+    }
+    
+    .info-item:last-child {
+        border-bottom: none;
+    }
+    
+    .form-container {
+        padding: 40px 25px;
+        box-shadow: none;
+    }
+    
+    .map-overlay-box {
+        left: 20px;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+</style>
+<body>
+<div id="header"></div>
+
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="gold-subtitle">GET IN TOUCH</span>
+            <h1>Contact <span class="gold-text">Us</span></h1>
+            <p>We're here to help you achieve your career goals.</p>
+        </div>
+    </header>
+
+    <section class="info-bar">
+        <div class="info-item">
+            <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
+            <div>
+                <span>Direct Line</span>
+                <p>+91 7997473473</p>
+            </div>
+        </div>
+        <div class="info-item">
+            <div class="icon-circle"><i class="fas fa-paper-plane"></i></div>
+            <div>
+                <span>Inquiries</span>
+                <p>support@techwell.co.in</p>
+            </div>
+        </div>
+        <div class="info-item">
+            <div class="icon-circle"><i class="fas fa-clock"></i></div>
+            <div>
+                <span>Campus Hours</span>
+                <p>Mon - Sat | 09:00 - 18:00</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-wrapper">
+        <div class="split-layout">
+            
+            <div class="text-content">
+                <h2 class="section-title">Why Professionals <br><span class="gold-text">Choose Us</span></h2>
+                <div class="divider"></div>
+                <p class="description">
+                    We specialize in high-impact career transitions. Our pedagogy is designed for those who seek more than just a job—they seek industry dominance.
+                </p>
+                
+                <div class="perk-card">
+                    <i class="fas fa-award gold-text"></i>
+                    <div>
+                        <h4>Tier-1 Partnerships</h4>
+                        <p>Direct hiring pipelines with Fortune 100 tech giants.</p>
+                    </div>
+                </div>
+                <div class="perk-card">
+                    <i class="fas fa-user-tie gold-text"></i>
+                    <div>
+                        <h4>Executive Coaching</h4>
+                        <p>Personalized grooming by former industry CEOs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <div class="form-header">
+                    <h3>Apply for Enrollment</h3>
+                    <p>Please provide your professional details below.</p>
+                </div>
+                <form id="contact-form">
+                    <div class="input-row">
+                        <input type="text" name="user_name" placeholder="Full Name" required>
+                        <input type="email" name="user_email" placeholder="Email Address" required>
+                    </div>
+                    
+                    <div class="input-row">
+                        <input type="tel" name="user_phone" placeholder="Phone Number (e.g. +1 234 567 890)" required>
+                        <select name="interested_in" required>
+                            <option value="" disabled selected>Nature of Inquiry</option>
+                            <option value="Placement">Corporate Placement</option>
+                            <option value="Training">Technical Training</option>
+                            <option value="Consultancy">Career Consultancy</option>
+                        </select>
+                    </div>
+
+                    <div class="input-full">
+                        <select name="course" required>
+                            <option value="" disabled selected>Select Specialized Program</option>
+                            <option value="Full Stack">Full Stack Software Engineering</option>
+                            <option value="Data Science">Data Science & Predictive Analytics</option>
+                            <option value="UI/UX">Advanced UI/UX Architecture</option>
+                            <option value="Cyber">Cyber Security & Ethical Hacking</option>
+                            <option value="Cloud">AWS/Azure Cloud Solutions</option>
+                            <option value="Product">Digital Product Management</option>
+                            <option value="DevOps">DevOps & Site Reliability</option>
+                            <option value="Blockchain">Blockchain Development</option>
+                        </select>
+                    </div>
+
+                    <textarea name="message" rows="4" placeholder="Briefly describe your career goals..." required></textarea>
+
+                    <button type="submit" id="submit-btn" class="gold-btn">
+                        TRANSMIT APPLICATION <i class="fas fa-chevron-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-container">
+        <div class="map-overlay-box">
+            <h4>Our Global Headquarter</h4>
+            <p>12th Avenue, Financial District<br>New York, NY 10005</p>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.221990129035!2d-74.003693684595!3d40.71312937933109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a2246db17d7%3A0x633d7b819f79d1a!2sFinancial%20District%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+<div id="footer"></div>
+    <script>
+
+ // REMOVE THIS DANGEROUS CODE:
+// eval(scripts[i].innerHTML);
+
+// REPLACE WITH THIS SECURE VERSION:
+function loadHTML(elementId, filePath) {
+    fetch(filePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load ' + filePath);
+            }
+            return response.text();
+        })
+        .then(data => {
+            const element = document.getElementById(elementId);
+            element.innerHTML = data;
+            
+            // Initialize functionality based on what was loaded
+            if (elementId === 'header') {
+                initializeHeader();
+            }
+            if (elementId === 'footer') {
+                initializeFooter();
+            }
+        })
+        .catch(error => {
+            console.error('Error loading HTML:', error);
+            // Show user-friendly error
+            document.getElementById(elementId).innerHTML = `
+                <div style="padding: 20px; text-align: center; color: #e53e3e;">
+                    <p>Failed to load content. Please refresh the page.</p>
+                </div>
+            `;
+        });
+}
+
+// Header initialization function
+function initializeHeader() {
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navActions = document.querySelector('.nav-actions');
+    
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navActions.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    }
+
+    // Sticky header scroll effect
+    const mainNav = document.getElementById('mainNav');
+    if (mainNav) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                mainNav.classList.add('scrolled');
+            } else {
+                mainNav.classList.remove('scrolled');
+            }
+        });
+    }
+
+    // Search functionality
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const searchTerm = searchInput.value;
+                console.log('Searching for:', searchTerm);
+                // Add your search logic here
+            }
+        });
+    }
+
+    // Button click handlers
+    const loginButton = document.querySelector('.login-button');
+    const signupButton = document.querySelector('.signup-button');
+    
+    if (loginButton) {
+        loginButton.addEventListener('click', () => {
+            window.location.href = 'login.html';
+        });
+    }
+    
+    if (signupButton) {
+        signupButton.addEventListener('click', () => {
+            window.location.href = 'signup.html';
+        });
+    }
+}
+
+// Footer initialization function
+function initializeFooter() {
+    // Add any footer-specific JavaScript here
+    const footerLinks = document.querySelectorAll('#footer a');
+    footerLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Add analytics tracking or other functionality
+            console.log('Footer link clicked:', link.href);
+        });
+    });
+}
+
+// Load header and footer on page load
+window.addEventListener('DOMContentLoaded', function() {
+    loadHTML('header', 'header.html');
+    loadHTML('footer', 'footer.html');
+});
+
+        // Optional: Function to load different pages dynamically
+        function loadPage(page) {
+            loadHTML('main-content', page + '.html');
+        }
+
+
+
+
+
+
+
+// 1. Configuration
+const EMAILJS_CONFIG = {
+    publicKey: "YOUR_PUBLIC_KEY",
+    serviceId: "YOUR_SERVICE_ID",
+    templateId: "YOUR_TEMPLATE_ID"
+};
+
+// 2. Initialize Service
+(function initEmailService() {
+    emailjs.init(EMAILJS_CONFIG.publicKey);
+})();
+
+// 3. Form Controller
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+
+const toggleButtonState = (isLoading) => {
+    submitBtn.disabled = isLoading;
+    submitBtn.innerHTML = isLoading 
+        ? '<i class="fas fa-spinner fa-spin"></i> TRANSMITTING...' 
+        : 'TRANSMIT APPLICATION <i class="fas fa-chevron-right"></i>';
+    
+    submitBtn.style.opacity = isLoading ? '0.7' : '1';
+};
+
+// 4. Submission Logic
+contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Visual feedback for the user
+    toggleButtonState(true);
+
+    try {
+        const response = await emailjs.sendForm(
+            EMAILJS_CONFIG.serviceId, 
+            EMAILJS_CONFIG.templateId, 
+            this
+        );
+
+        if (response.status === 200) {
+            handleSuccess();
+        }
+    } catch (error) {
+        handleError(error);
+    } finally {
+        toggleButtonState(false);
+    }
+});
+
+/**
+ * UI Feedback Helpers
+ */
+function handleSuccess() {
+    // A professional alternative to alert()
+    submitBtn.style.background = "#2ecc71"; // Success Green
+    submitBtn.textContent = "APPLICATION RECEIVED";
+    
+    setTimeout(() => {
+        submitBtn.style.background = "#3b82f5"; // Revert to Brand Blue
+        submitBtn.innerHTML = 'TRANSMIT APPLICATION <i class="fas fa-chevron-right"></i>';
+        contactForm.reset();
+    }, 4000);
+}
+
+function handleError(err) {
+    console.error("Submission Error:", err);
+    submitBtn.style.background = "#e74c3c"; // Error Red
+    submitBtn.textContent = "TRANSMISSION FAILED";
+    
+    setTimeout(() => {
+        submitBtn.style.background = "#3b82f5";
+        toggleButtonState(false);
+    }, 3000);
+}
+    </script>
+</body>
+</html>

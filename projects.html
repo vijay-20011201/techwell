@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Portfolio | TechWell</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-primary: #0f172a;
+            --accent: #3b82f6;
+            --text-muted: #64748b;
+            --surface: #ffffff;
+            --body-bg: #f8fafc;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--body-bg);
+            color: var(--brand-primary);
+            line-height: 1.6;
+        }
+
+     
+        .hero {
+            position: relative;
+            padding: 180px 0 100px;
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2070') center/cover no-repeat;
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.2); /* Clean dark overlay */
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #bae6fd;
+            margin-bottom: 24px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: white;
+            line-height: 1.2;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Gradient accent for key words */
+        .hero h1 span {
+            background: linear-gradient(135deg, #ffffff 0%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none; /* Text fill handles this */
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #f1f5f9;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-weight: 500;
+        }
+
+        /* --- Premium Search Bar --- */
+        .sticky-tools {
+            position: relative;
+            padding: 0 20px;
+            margin-bottom: 50px;
+            margin-top: -30px; 
+            z-index: 10;
+        }
+
+        .search-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 8px;
+            border-radius: 24px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-wrapper i {
+            margin-left: 20px;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            outline: none;
+            color: var(--brand-primary);
+        }
+
+        /* --- Filter Chips --- */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 100px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .filter-btn.active {
+            background: var(--brand-primary);
+            color: white;
+            border-color: var(--brand-primary);
+            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.2);
+        }
+
+        /* --- Project Grid --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            padding-bottom: 80px;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 24px; 
+            border: 1px solid #f1f5f9;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -6px rgba(0, 0, 0, 0.1);
+            border-color: #dbeafe;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        /* Dynamic Colors for Tech */
+        .stack-ai { background: #eef2ff; color: #4338ca; }
+        .stack-java { background: #fff7ed; color: #c2410c; }
+        .stack-web { background: #f0fdf4; color: #15803d; }
+        .stack-ds { background: #faf5ff; color: #7e22ce; }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.5;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Space out tag and button */
+            gap: 12px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 16px;
+        }
+
+        .enquire-card-btn {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .enquire-card-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .id-badge {
+            font-family: monospace;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            background: #f8fafc;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        /* --- Animations --- */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card { animation: slideUp 0.5s ease backwards; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 12px;
+            }
+            .card { padding: 16px; }
+            .card h3 { font-size: 1rem; }
+            .icon-box { width: 36px; height: 36px; font-size: 1rem; }
+            .id-badge { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Official Project Archive</span>
+            </div>
+            <h1>Research & <span>Innovation</span></h1>
+            <p>Explore the complete collection of final year engineering projects from BKIT. Discover cutting-edge solutions in AI, Full Stack, and Data Science.</p>
+        </div>
+    </section>
+
+    <div class="sticky-tools">
+        <div class="search-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" id="mainSearch" class="search-input" placeholder="Type to search projects (e.g. 'Machine Learning' or 'E-commerce')..." onkeyup="handleFilter()">
+        </div>
+        
+        <div class="filters">
+            <button class="filter-btn active" onclick="setCategory('All', this)">All Projects</button>
+            <button class="filter-btn" onclick="setCategory('AI/ML', this)">Artificial Intelligence</button>
+            <button class="filter-btn" onclick="setCategory('Java', this)">Java Ecosystem</button>
+            <button class="filter-btn" onclick="setCategory('Python', this)">Python Stack</button>
+            <button class="filter-btn" onclick="setCategory('Data Science', this)">Data Science</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="grid" id="projectGrid">
+            <!-- Projects will be rendered here -->
+        </div>
+
+        <div id="emptyState" style="display:none; text-align:center; padding: 60px 0;">
+            <i class="fas fa-cube" style="font-size: 3rem; color: #e2e8f0; margin-bottom: 20px;"></i>
+            <h3 style="color: var(--text-muted);">No projects match your current selection</h3>
+        </div>
+    </div>
+
+    <!-- PROJECT ENQUIRY MODAL -->
+    <div id="enquiryModal" class="modal-overlay">
+        <div class="modal-card">
+            <button class="close-modal-btn" onclick="closeEnquiryModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <span class="badge-sub">Enquire Now</span>
+                <h2>Get Project Details</h2>
+                <p>Complete the form to get the source code & documentation.</p>
+            </div>
+            <form class="enquiry-form modal-form">
+                
+                <div class="project-preview">
+                    <label><i class="fas fa-check-circle"></i> Selected Project</label>
+                    <input type="text" id="selectedProjectField" readonly placeholder="No project selected">
+                </div>
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="Enter mobile no" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="Enter your email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>College/University</label>
+                    <input type="text" placeholder="Enter your college name">
+                </div>
+                <div class="form-group">
+                    <label>Additional Requirements (Optional)</label>
+                    <textarea id="userMessage" placeholder="Enter specific requirements..." rows="3"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Get Project Details <i class="fas fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background: white;
+            width: 100%;
+            max-width: 550px;
+            border-radius: 24px;
+            padding: 35px 30px;
+            position: relative;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: translateY(0);
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f1f5f9;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #64748b;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal-btn:hover {
+            background: #fee2e2;
+            color: #ef4444;
+        }
+
+        .modal-header { text-align: center; margin-bottom: 25px; }
+        .modal-header h2 { font-size: 1.6rem; color: #0f172a; margin: 10px 0 5px; font-weight: 800; }
+        .modal-header p { color: #64748b; font-size: 0.9rem; }
+
+        .badge-sub {
+            display: inline-block;
+            background: #eef2ff;
+            color: #4f46e5;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Project Preview Field */
+        .project-preview {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+        }
+        
+        .project-preview label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #0284c7;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .project-preview input {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            font-size: 0.95rem !important;
+            font-weight: 600;
+            color: #0c4a6e !important;
+            width: 100%;
+        }
+
+        /* Form Styles Reuse */
+        .modal-form .form-group { margin-bottom: 16px; }
+        .modal-form label { display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 6px; }
+        .modal-form input, .modal-form textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            font-family: inherit;
+            font-size: 0.9rem;
+            color: #1e293b;
+            transition: all 0.2s;
+        }
+        .modal-form input:focus, .modal-form textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+        }
+        .submit-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
+
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .modal-card { padding: 30px 20px; }
+        }
+    </style>
+
+    <div id="footer"></div>
+
+    <script>
+        const projects = [
+            { sl: 1, stack: "Python Full Stack", title: "Design and Implementation of a Secure E-Commerce Web Application Using Django Framework" },
+            { sl: 2, stack: "Python Full Stack", title: "A Web-Based Electronic Voting System Using Python and Django" },
+            { sl: 3, stack: "AI/ML", title: "NeuroCare AI: Automated Stroke Detection and Intelligent Patient Care System Using Deep Learning" },
+            { sl: 4, stack: "AI/ML", title: "MedScan: An AI-Enabled Medical Diagnostic System for Disease Prediction" },
+            { sl: 5, stack: "AI/ML", title: "EmotionSense: Advanced Emotion Detection and Smart Recommendation System Using Machine Learning" },
+            { sl: 6, stack: "AI/ML", title: "Touch-to-Type: A Fingerprint-Based Blood Group Detection System Using AI and Image Processing" },
+            { sl: 7, stack: "AI/ML", title: "SmartInsight: Predictive Analytics Model for Student Academic Performance Using Machine Learning" },
+            { sl: 8, stack: "Java", title: "Smart Employee Management System Using AI for Performance Tracking and Optimization" },
+            { sl: 9, stack: "Java Full Stack", title: "Development of an Online Examination Portal Using Java Full Stack Framework" },
+            { sl: 10, stack: "Java Spring Boot", title: "Design and Development of a Blogging Platform Using Spring Boot and MySQL" },
+            { sl: 11, stack: "Java Full Stack", title: "Implementation of a Real-Time Communication Platform (Slack Clone) Using Java Technologies" },
+            { sl: 12, stack: "MERN Stack", title: "Design and Implementation of a MERN-Based E-Commerce Application" },
+            { sl: 13, stack: "MERN Stack", title: "Implementation of an AI-Powered Conversational Mock Interview Platform with MERN Architecture" },
+            { sl: 14, stack: "AI/ML", title: "SmartSort: AI-Powered Detection of Healthy and Rotten Fruits and Vegetables Using CNN" },
+            { sl: 15, stack: "AI/ML", title: "AI Resume Analyzer: Intelligent Resume Screening and Skill Matching System Using NLP" },
+            { sl: 16, stack: "AI/ML", title: "Generativ-AI Detector: Automated Detection of AI-Generated Text Using Deep Learning" },
+            { sl: 17, stack: "AI/ML", title: "FakeNewsGuard: A Real-Time Fake News Fact-Checking System Using Generative AI and Search Tools" },
+            { sl: 18, stack: "Java Spring Boot", title: "Development of a Job Recruitment and Management Portal Using Spring Boot" },
+            { sl: 19, stack: "Java Spring Boot", title: "Design of an Online Auction System Using Spring Boot and RESTful Web Services" },
+            { sl: 20, stack: "Java Spring Boot", title: "Design and Implementation of an Intelligent Food Delivery System Using Spring Boot" },
+            { sl: 21, stack: "Java Spring Boot", title: "Multi-Vendor Online E-Commerce Portal Using Spring Boot and React" },
+            { sl: 22, stack: "Java Spring Boot", title: "Secure Online Examination Portal Using Spring Boot and MySQL" },
+            { sl: 23, stack: "Java Spring Boot", title: "Traffic E-Challan Management and Automation System Using Spring Boot Framework" },
+            { sl: 24, stack: "Java Spring Boot", title: "Online airlines booking system" },
+            { sl: 25, stack: "AI/ML", title: "GemmaAI-SkillBridge: Intelligent Career Guidance and Skill Mapping Platform Using Generative AI" },
+            { sl: 26, stack: "Data Science", title: "Time-Series Forecasting and Cryptocurrency Price Prediction Using Deep Learning and Statistical Models" },
+            { sl: 27, stack: "Data Science", title: "QuantBack: Algorithmic Trading Strategy Backtesting and Performance Analysis Platform" },
+            { sl: 28, stack: "Data Science", title: "NetSecure: A Machine Learning-Based Network Intrusion Detection and Security Monitoring System" },
+            { sl: 29, stack: "Java Spring Boot", title: "Design and Implementation of a Spring Boot–Based Real Estate Listing Platform" },
+            { sl: 30, stack: "Java Spring Boot", title: "Design and Development of a Spring Boot–Based Multi-Vendor Marketing Platform" },
+            { sl: 31, stack: "Java Spring Boot", title: "A Spring Boot–Driven Patient and Hospital Administration Management Platform" }
+        ];
+
+        let activeCategory = 'All';
+
+        function getStyleClass(stack) {
+            // Specific Tech Stacks
+            if (stack.includes('Python')) return { icon: 'fab fa-python', class: 'stack-ai' }; // Reuse AI colors or define new
+            if (stack.includes('MERN') || stack.includes('React')) return { icon: 'fab fa-react', class: 'stack-web' };
+            if (stack.includes('Java')) return { icon: 'fab fa-java', class: 'stack-java' };
+            
+            // Domains
+            if (stack.includes('AI') || stack.includes('Machine')) return { icon: 'fas fa-brain', class: 'stack-ai' };
+            if (stack.includes('Data') || stack.includes('Quant')) return { icon: 'fas fa-database', class: 'stack-ds' };
+            
+            // Default
+            return { icon: 'fas fa-code', class: 'stack-web' };
+        }
+
+        function setCategory(cat, btn) {
+            activeCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            handleFilter();
+        }
+
+        function handleFilter() {
+            const query = document.getElementById('mainSearch').value.toLowerCase();
+            const filtered = projects.filter(p => {
+                const matchesSearch = p.title.toLowerCase().includes(query) || p.stack.toLowerCase().includes(query);
+                const matchesCat = activeCategory === 'All' || p.stack.includes(activeCategory);
+                return matchesSearch && matchesCat;
+            });
+            render(filtered);
+        }
+
+        /* --- New Modal Logic --- */
+        function openEnquiryModal(title, sl) {
+            const modal = document.getElementById('enquiryModal');
+            const projectField = document.getElementById('selectedProjectField');
+            const userMsg = document.getElementById('userMessage');
+            const id = sl.toString().padStart(3, '0');
+            
+            // Populate Read-Only Field
+            projectField.value = `#${id} - ${title}`;
+            
+            // Clear Message Field
+            userMsg.value = ''; 
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeEnquiryModal() {
+            const modal = document.getElementById('enquiryModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close on outside click
+        document.getElementById('enquiryModal').addEventListener('click', function(e) {
+            if (e.target === this) closeEnquiryModal();
+        });
+
+        function render(items) {
+            const grid = document.getElementById('projectGrid');
+            const empty = document.getElementById('emptyState');
+            grid.innerHTML = '';
+            
+            if (items.length === 0) {
+                empty.style.display = 'block';
+                return;
+            }
+            empty.style.display = 'none';
+
+            items.forEach((p, i) => {
+                const style = getStyleClass(p.stack);
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.animationDelay = `${i * 0.05}s`;
+                card.innerHTML = `
+                    <div>
+                        <div class="card-header">
+                            <div class="icon-box ${style.class}">
+                                <i class="${style.icon}"></i>
+                            </div>
+                            <span class="id-badge">#${p.sl.toString().padStart(3, '0')}</span>
+                        </div>
+                        <h3>${p.title}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <span class="tag">${p.stack}</span>
+                        <button class="enquire-card-btn" onclick="openEnquiryModal('${p.title}', ${p.sl})">
+                            Enquire
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        render(projects);
+
+        // Header & Footer Loader
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => response.text())
+                .then(data => {
+                    const element = document.getElementById(elementId);
+                    if (element) {
+                        element.innerHTML = data;
+                        const scripts = element.getElementsByTagName("script");
+                        for (let i = 0; i < scripts.length; i++) {
+                            const script = document.createElement("script");
+                            if (scripts[i].src) {
+                                script.src = scripts[i].src;
+                                script.async = false;
+                            } else {
+                                script.textContent = scripts[i].textContent;
+                            }
+                            document.body.appendChild(script);
+                        }
+                    }
+                })
+                .catch(error => console.error('Error loading HTML:', error));
+        }
+
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
+    </script>
+</body>
+</html>

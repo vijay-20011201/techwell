@@ -14,71 +14,115 @@
 
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
-            padding-top: 120px;
+            padding-top: 110px; /* Increased for Top Bar (40px) + Main Nav (70px) */
+            overflow-x: hidden;
+            width: 100%;
         }
 
-        /* TOP UTILITY BAR */
+        /* TOP BAR */
         .top-bar {
             background: #1a202c;
             color: #e2e8f0;
-            font-size: 14px;
-            padding: 10px 0;
+            height: 40px;
+            display: flex;
+            align-items: center;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1001;
-            transition: all 0.3s ease;
+            z-index: 1003;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .top-bar.scrolled {
-            padding: 6px 0;
-        }
-
-        .top-bar-content {
-            max-width: 1200px;
+        .top-bar-container {
+            width: 100%;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 30px;
         }
 
-        .top-bar-left, .top-bar-right {
+        .top-bar-left {
             display: flex;
-            align-items: center;
             gap: 25px;
         }
 
+        .top-bar-left a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .top-bar-left a i {
+            color: #3b82f6;
+            font-size: 15px;
+        }
+
+        .top-bar-left a:hover {
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .top-bar-social {
+            display: flex;
+            gap: 15px;
+            margin-right: 25px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding-right: 25px;
+        }
+
+        .top-bar-social a {
+            color: #cbd5e1;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .top-bar-social a:hover {
+            color: #3b82f6;
+            transform: scale(1.2);
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .top-bar ul li a {
+            font-size: 13px;
+            letter-spacing: 0.3px;
+        }
+
         .top-bar a {
-            color: #e2e8f0;
+            color: #cbd5e1;
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 500;
         }
 
         .top-bar a:hover {
-            color: #3b82f6;
-        }
-
-        .top-bar i {
-            margin-right: 6px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-links a {
-            font-size: 16px;
+            color: white;
         }
 
         /* MAIN NAVIGATION BAR */
         .main-nav {
             background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             position: fixed;
-            top: 44px;
+            top: 40px; /* Pushed down by Top Bar */
             left: 0;
             right: 0;
             z-index: 1000;
@@ -86,33 +130,35 @@
         }
 
         .main-nav.scrolled {
-            top: 32px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
         .nav-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 70px;
         }
 
-        
+        /* LOGO */
+        .logo {
+            flex-shrink: 0;
+            z-index: 1002;
+        }
+
         .logo img {
-    height: 75px;          /* Adjust as needed */
-    width: auto;
-    display: block;
-}
+            height: 70px;
+            width: auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
 
-@media (max-width: 768px) {
-    .logo img {
-        height: 34px;
-    }
-}
-
+        .logo:hover img {
+            transform: scale(1.05);
+        }
 
         /* NAVIGATION MENU */
         .nav-menu {
@@ -132,102 +178,111 @@
             font-weight: 500;
             font-size: 15px;
             padding: 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: color 0.3s;
+            display: block;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-menu > li > a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s ease;
         }
 
         .nav-menu > li > a:hover {
             color: #3b82f6;
         }
 
-        .nav-menu > li > a i {
-            font-size: 10px;
+        .nav-menu > li > a:hover::after {
+            width: 100%;
         }
 
-        /* DROPDOWN MENUS */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        /* NAV ACTIONS */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        /* SEARCH */
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 9px 38px 9px 14px;
+            border: 2px solid #e2e8f0;
             border-radius: 8px;
-            padding: 20px;
-            min-width: 220px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            margin-top: 15px;
+            font-size: 14px;
+            width: 220px;
+            transition: all 0.3s;
         }
 
-        .nav-menu > li:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+        .search-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            width: 260px;
         }
 
-        .dropdown-menu a {
-            display: block;
-            color: #4a5568;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 6px;
-            transition: all 0.2s;
+        .search-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            pointer-events: none;
             font-size: 14px;
         }
 
-        .dropdown-menu a:hover {
-            background: #eff6ff;
+        /* BUTTONS */
+        .login-button {
+            background: transparent;
             color: #3b82f6;
-            padding-left: 20px;
-        }
-
-        /* MEGA DROPDOWN FOR COURSES */
-        .mega-dropdown {
-            min-width: 700px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .mega-column h4 {
-            color: #1a202c;
-            font-size: 14px;
+            padding: 10px 22px;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
             font-weight: 600;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .mega-column a {
-            padding: 8px 12px;
             font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
         }
 
-        /* CTA BUTTON */
-        .cta-button {
+        .login-button:hover {
             background: #3b82f6;
             color: white;
-            padding: 12px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            background: #2563eb;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
-        /* MOBILE MENU */
+        .signup-button {
+            background: #3b82f6;
+            color: white;
+            padding: 10px 22px;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .signup-button:hover {
+            background: #2563eb;
+            border-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+
+        /* MOBILE TOGGLE */
         .mobile-toggle {
             display: none;
             background: none;
@@ -235,109 +290,423 @@
             font-size: 24px;
             color: #1a202c;
             cursor: pointer;
+            z-index: 1002;
+            padding: 5px;
+            transition: all 0.3s;
         }
 
-    
-        /* MOBILE RESPONSIVE */
+        .mobile-toggle:hover {
+            color: #3b82f6;
+        }
+
+        .mobile-toggle i {
+            transition: all 0.3s;
+        }
+
+        /* MOBILE OVERLAY */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 110px; /* Adjusted for Top Bar + Main Nav */
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 110px);
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none; 
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            pointer-events: auto; 
+        }
+
+        /* TABLET RESPONSIVE (768px - 1100px) */
+        @media (max-width: 1100px) {
+            .nav-menu {
+                gap: 25px;
+            }
+
+            .search-input {
+                width: 180px;
+            }
+            
+            .search-input:focus {
+                width: 200px;
+            }
+        }
+
+        /* MOBILE RESPONSIVE (Max Width 968px) */
         @media (max-width: 968px) {
+            /* Mobile Header Fix: Both Bars Fixed */
+            
             body {
-                padding-top: 100px;
+                padding-top: 110px; /* Top Bar (40px) + Main Nav (70px) */
             }
 
-            .top-bar-left span:not(.phone) {
+            .top-bar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1003;
+                padding: 0;
+                height: 40px; /* Fixed height for top bar */
+            }
+
+            .top-bar-container {
+                padding: 0 15px;
+                flex-direction: row; /* Row layout to save vertical space */
+                justify-content: space-between;
+                height: 100%;
+                gap: 10px;
+            }
+
+            .top-bar-left {
+                justify-content: flex-start;
+                gap: 15px;
+                flex-wrap: nowrap;
+            }
+
+            .top-bar-right {
+                width: auto;
+                justify-content: flex-end;
+            }
+
+            .top-bar-social {
                 display: none;
             }
 
-            .top-bar-right .location {
-                display: none;
+            .top-bar ul {
+                display: flex;
+                gap: 10px;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .top-bar ul li a {
+                font-size: 12px;
+            }
+
+            /* Main Nav Fixed Below Top Bar */
+            .main-nav {
+                position: fixed;
+                top: 40px; /* Pushed down by fixed Top Bar */
+                width: 100%;
+                margin-top: 0; 
+                height: 70px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+
+            body.menu-open {
+                overflow: hidden;
+            }
+
+            .nav-content {
+                padding: 0 20px;
+                height: 70px;
             }
 
             .mobile-toggle {
                 display: block;
             }
 
+            .mobile-overlay {
+                display: block;
+                top: 110px; /* 40px + 70px */
+                height: calc(100vh - 110px);
+                z-index: 998;
+            }
+
+            /* Hide desktop search */
+            .search-container {
+                display: none;
+            }
+
             .nav-menu {
                 position: fixed;
-                top: 114px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 114px);
+                top: 110px; /* 40px + 70px */
+                right: -100%;
+                width: 300px;
+                max-width: 85%;
+                height: calc(100vh - 110px);
                 background: white;
                 flex-direction: column;
-                padding: 30px;
+                padding: 20px;
                 gap: 0;
                 overflow-y: auto;
-                transition: left 0.3s ease;
+                transition: right 0.3s ease-in-out;
+                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+                align-items: flex-start;
+                z-index: 999;
             }
 
             .nav-menu.active {
-                left: 0;
+                right: 0;
             }
 
             .nav-menu > li {
                 width: 100%;
-                border-bottom: 1px solid #e2e8f0;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            .nav-menu > li:last-child {
+                border-bottom: none;
             }
 
             .nav-menu > li > a {
-                padding: 18px 0;
+                padding: 16px 0;
                 font-size: 16px;
+                width: 100%;
+                display: flex;
                 justify-content: space-between;
+                align-items: center;
             }
 
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                padding: 10px 0 10px 20px;
-                margin-top: 0;
+            .nav-menu > li > a::after {
                 display: none;
             }
 
-            .nav-menu > li.active .dropdown-menu {
-                display: block;
+             /* Nav Actions inside Menu for Mobile */
+            .nav-actions {
+                position: fixed;
+                bottom: 0;
+                right: -100%;
+                width: 300px;
+                max-width: 85%;
+                background: white;
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+                border-top: 1px solid #f1f5f9;
+                transition: right 0.3s ease-in-out;
+                z-index: 1000;
             }
 
-            .mega-dropdown {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                min-width: auto;
+            .nav-actions.active {
+                right: 0;
             }
 
-            .cta-button {
+            .login-button,
+            .signup-button {
                 width: 100%;
-                margin-top: 20px;
                 text-align: center;
+                padding: 12px;
             }
+        }
+
+        /* SMALL MOBILE (Max Width 480px) */
+        @media (max-width: 480px) {
+            .logo img {
+                height: 40px;
+            }
+            
+            .nav-content {
+                padding: 0 15px;
+            }
+            
+            .top-bar-left a {
+                font-size: 12px;
+            }
+        }
+
+        /* DEMO CONTENT STYLES */
+        .demo-section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .demo-section h1 {
+            font-size: 48px;
+            color: #1a202c;
+            margin-bottom: 20px;
+        }
+
+        .demo-section p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .demo-section {
+                padding: 60px 20px;
+            }
+
+            .demo-section h1 {
+                font-size: 32px;
+            }
+
+            .demo-section p {
+                font-size: 16px;
+            }
+        }
+        /* AUTH MODALS */
+        .auth-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .auth-modal-overlay.active {
+            opacity: 1;
+            display: flex; 
+        }
+
+        .auth-modal {
+            background: white;
+            width: 400px;
+            max-width: 90%;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            display: none;
+        }
+
+        .auth-modal.active {
+            display: block;
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 20px;
+            color: #a0aec0;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #4a5568;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #4a5568;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .forgot-password {
+            font-size: 13px;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .auth-btn:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .auth-switch a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .auth-switch a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <!-- TOP UTILITY BAR -->
-    <div class="top-bar" id="topBar">
-        <div class="top-bar-content">
+    <!-- TOP NAVIGATION BAR -->
+    <div class="top-bar">
+        <div class="top-bar-container">
             <div class="top-bar-left">
-                <a href="tel:+919876543210" class="phone">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>+91 7997473473</span>
-                </a>
-                <a href="mailto:info@techwell.com">
-                    <i class="fas fa-envelope"></i>
-                    <span>info@techwell.com</span>
-                </a>
+                <a href="tel:+917997473473"><i class="fas fa-phone-alt"></i> +91 7997473473</a>
+                <a href="mailto:support@techwell.co.in"><i class="fas fa-envelope"></i> support@techwell.co.in</a>
             </div>
             <div class="top-bar-right">
-                <div class="social-links">
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.instagram.com/techwell_official/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/techwellbusiness/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <div class="top-bar-social">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
-                <span class="location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    1st floor, TECHWELL, Womens College Rd, opp.LIC Office, Srikakulam
-                </span>
+                <ul>
+                    <li><a href="#">Training</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#">Store</a></li>
+                </ul>
             </div>
         </div>
     </div>
@@ -346,92 +715,99 @@
     <nav class="main-nav" id="mainNav">
         <div class="nav-content">
             <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="TechWell Logo">
-        </a>
+                <img src="images/Logo.jpeg" alt="TechWell Logo">
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Courses</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="internship.html">Internship</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="#">Preparation</a></li>
+            </ul>
+
+            <div class="nav-actions" id="navActions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search courses, jobs...">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <button class="login-button" onclick="openLoginModal()">Login</button>
+                <button class="signup-button" onclick="openSignupModal()">Sign Up</button>
+            </div>
 
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
-
-            <ul class="nav-menu" id="navMenu">
-                <li>
-                    <a href="#">
-                        Courses <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="dropdown-menu mega-dropdown">
-                        <div class="mega-column">
-                            <h4>Software</h4>
-                            <a href="#">Java Programming</a>
-                            <a href="#">Python Programming</a>
-                            <a href="#">Software Testing</a>
-                            <a href="#">DevOps</a>
-                        </div>
-                        <div class="mega-column">
-                            <h4>Infrastructure</h4>
-                            <a href="#">Linux Administration</a>
-                            <a href="#">Hardware & Networking</a>
-                            <a href="#">Data Center Operations</a>
-                        </div>
-                        <div class="mega-column">
-                            <h4>Security & Business</h4>
-                            <a href="#">Cyber Security</a>
-                            <a href="#">Tally + MS Office</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <a href="#">
-                        Internship <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="#">Internship Programs</a>
-                        <a href="#">Live Internships</a>
-                        <a href="#">Internship with Certificate</a>
-                        <a href="#">Apply for Internship</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="#">
-                        Jobs <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="#">Fresher Jobs</a>
-                        <a href="#">Experienced Jobs</a>
-                        <a href="#">Placement Assistance</a>
-                        <a href="#">Upload Resume</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="#">
-                        Projects <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="#">Final Year Projects</a>
-                        <a href="#">Live Projects</a>
-                        <a href="#">Case Studies</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="#">Contact Us</a>
-                </li>
-                <li>
-                    <!--<a href="#" class="cta-button">Apply Now</a>-->
-                </li>
-            </ul>
         </div>
     </nav>
 
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- AUTH MODALS CONTAINER -->
+    <div class="auth-modal-overlay" id="authModalOverlay">
+        
+        <!-- LOGIN MODAL -->
+        <div class="auth-modal" id="loginModal">
+            <span class="modal-close" onclick="closeAuthModal()"><i class="fas fa-times"></i></span>
+            <h3 class="modal-title">Welcome Back</h3>
+            <form>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" class="form-input" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-input" placeholder="Enter your password">
+                </div>
+                <div class="form-options">
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+            </form>
+            <div class="auth-switch">
+                Don't have an account? <a onclick="switchToSignup()">Sign Up</a>
+            </div>
+        </div>
+
+        <!-- SIGNUP MODAL -->
+        <div class="auth-modal" id="signupModal">
+            <span class="modal-close" onclick="closeAuthModal()"><i class="fas fa-times"></i></span>
+            <h3 class="modal-title">Create Account</h3>
+            <form>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-input" placeholder="Enter full name">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" class="form-input" placeholder="Enter email address">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-input" placeholder="Enter phone number">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-input" placeholder="Create a password">
+                </div>
+                <button type="submit" class="auth-btn">Sign Up</button>
+            </form>
+            <div class="auth-switch">
+                Already have an account? <a onclick="switchToLogin()">Login</a>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Sticky header scroll effect
-        const topBar = document.getElementById('topBar');
+        // Sticky header on scroll
         const mainNav = document.getElementById('mainNav');
         
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                topBar.classList.add('scrolled');
                 mainNav.classList.add('scrolled');
             } else {
-                topBar.classList.remove('scrolled');
                 mainNav.classList.remove('scrolled');
             }
         });
@@ -439,26 +815,118 @@
         // Mobile menu toggle
         const mobileToggle = document.getElementById('mobileToggle');
         const navMenu = document.getElementById('navMenu');
+        const navActions = document.getElementById('navActions');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const body = document.body;
         
-        mobileToggle.addEventListener('click', () => {
+        function toggleMobileMenu() {
             navMenu.classList.toggle('active');
+            navActions.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            
             const icon = mobileToggle.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                body.classList.add('menu-open');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                body.classList.remove('menu-open');
+            }
+        }
+
+        mobileToggle.addEventListener('click', toggleMobileMenu);
+        
+        // Close menu when clicking overlay
+        mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Close menu when clicking a menu item
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            });
         });
 
-        // Mobile dropdown toggle
-        const navItems = document.querySelectorAll('.nav-menu > li');
-        
-        navItems.forEach(item => {
-            const link = item.querySelector('a');
-            const dropdown = item.querySelector('.dropdown-menu');
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const searchTerm = searchInput.value;
+                console.log('Searching for:', searchTerm);
+                alert('Search functionality will be implemented for: ' + searchTerm);
+            }
+        });
+
+        // Close mobile menu on window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth > 968 && navMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            }, 250);
+        });
+
+        /* --- AUTH MODAL LOGIC --- */
+        const authOverlay = document.getElementById('authModalOverlay');
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+
+        function openLoginModal() {
+            authOverlay.classList.add('active');
+            authOverlay.style.display = 'flex';
+            setTimeout(() => {
+                loginModal.classList.add('active');
+                signupModal.classList.remove('active');
+            }, 10);
             
-            if (dropdown && window.innerWidth <= 968) {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    item.classList.toggle('active');
-                });
+            // Close mobile menu if open
+            if(navMenu.classList.contains('active')) toggleMobileMenu();
+        }
+
+        function openSignupModal() {
+            authOverlay.classList.add('active');
+            authOverlay.style.display = 'flex';
+            setTimeout(() => {
+                signupModal.classList.add('active');
+                loginModal.classList.remove('active');
+            }, 10);
+
+            // Close mobile menu if open
+            if(navMenu.classList.contains('active')) toggleMobileMenu();
+        }
+
+        function closeAuthModal() {
+            authOverlay.classList.remove('active');
+            loginModal.classList.remove('active');
+            signupModal.classList.remove('active');
+            setTimeout(() => {
+                authOverlay.style.display = 'none';
+            }, 300);
+        }
+
+        function switchToSignup() {
+            loginModal.classList.remove('active');
+            setTimeout(() => {
+                signupModal.classList.add('active');
+            }, 200);
+        }
+
+        function switchToLogin() {
+            signupModal.classList.remove('active');
+            setTimeout(() => {
+                loginModal.classList.add('active');
+            }, 200);
+        }
+
+        // Close modal when clicking outside
+        authOverlay.addEventListener('click', (e) => {
+            if (e.target === authOverlay) {
+                closeAuthModal();
             }
         });
     </script>

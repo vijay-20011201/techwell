@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Python Programming | TechWell</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+            background: #f8fafc;
+        }
+
+        /* Hero Section */
+        .course-hero {
+            padding: 100px 20px 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 30px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meta-item i {
+            color: #00A9CE;
+            font-size: 20px;
+        }
+
+        .meta-item span {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 169, 206, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 16px 32px;
+            background: white;
+            color: #00A9CE;
+            border: 2px solid #00A9CE;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #00A9CE;
+            color: white;
+        }
+
+        .hero-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overview Section */
+        .overview {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .overview-card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid #00A9CE;
+            transition: all 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 169, 206, 0.15);
+        }
+
+        .overview-card i {
+            font-size: 32px;
+            color: #00A9CE;
+            margin-bottom: 15px;
+        }
+
+        .overview-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .overview-card p {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #f8fafc, #ffffff);
+        }
+
+        .module {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .module-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .module-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .module-title h3 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .module-duration {
+            background: #00A9CE;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .module-description {
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .topics-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: #e0f2fe;
+            transform: translateX(5px);
+        }
+
+        .topic-item i {
+            color: #00A9CE;
+            font-size: 16px;
+        }
+
+        .topic-item span {
+            font-size: 15px;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .module-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="course-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Master <span class="hero-highlight">Python</span> Programming</h1>
+                
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span><strong>6 Months</strong> Duration</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span><strong>Small Batches</strong> (15-20 students)</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-certificate"></i>
+                        <span><strong>Industry Certificate</strong></span>
+                    </div>
+                </div>
+
+                <p class="hero-description">
+                    Become a proficient Python Developer with hands-on training in Python fundamentals, web development, data analysis, automation, machine learning, and real-world projects. Build your portfolio and get 100% placement assistance.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="enroll.html" class="btn-primary">Enroll Now</a>
+                    <a href="#curriculum" class="btn-secondary">View Curriculum</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&q=80" alt="Python Programming">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Course Overview</h2>
+                <p>A comprehensive 6-month program covering everything from Python basics to advanced applications in web development, data science, and automation</p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <i class="fab fa-python"></i>
+                    <h3>Python Fundamentals</h3>
+                    <p>Master core Python concepts, OOP, data structures, and advanced programming techniques</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Web Development</h3>
+                    <p>Build dynamic web applications with Django, Flask, REST APIs, and modern frameworks</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Data Analysis</h3>
+                    <p>Work with Pandas, NumPy, Matplotlib, and data processing libraries for insights</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Machine Learning</h3>
+                    <p>Introduction to ML concepts, scikit-learn, and building predictive models</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Automation</h3>
+                    <p>Automate tasks with Python scripts, web scraping, and process automation tools</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Placement Support</h3>
+                    <p>Resume building, coding challenges, mock interviews, and job referrals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum" id="curriculum">
+        <div class="container">
+            <div class="section-header">
+                <h2>Detailed Curriculum</h2>
+                <p>Structured learning path from Python basics to advanced applications and real-world projects</p>
+            </div>
+
+            <!-- Module 1 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">01</div>
+                        <h3>Python Fundamentals</h3>
+                    </div>
+                    <div class="module-duration">1 Month</div>
+                </div>
+                <p class="module-description">Build a strong foundation in Python programming with syntax, data types, control structures, and basic problem-solving.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Python Installation & Setup</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Variables, Data Types & Operators</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Control Flow (if, for, while)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Functions & Lambda Expressions</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Lists, Tuples, Sets & Dictionaries</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>String Manipulation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>File Handling (Read/Write)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Exception Handling & Debugging</span></div>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">02</div>
+                        <h3>Object-Oriented Programming (OOP)</h3>
+                    </div>
+                    <div class="module-duration">3 Weeks</div>
+                </div>
+                <p class="module-description">Master object-oriented programming concepts to write modular, reusable, and maintainable code.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Classes & Objects</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Constructors & Destructors</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Inheritance & Polymorphism</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Encapsulation & Abstraction</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Method Overriding & Overloading</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Magic Methods & Dunder</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Class & Static Methods</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Design Patterns Basics</span></div>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">03</div>
+                        <h3>Advanced Python Concepts</h3>
+                    </div>
+                    <div class="module-duration">3 Weeks</div>
+                </div>
+                <p class="module-description">Dive into advanced Python features including decorators, generators, context managers, and functional programming.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Decorators & Closures</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Generators & Iterators</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Context Managers</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>List Comprehensions & Generators</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Map, Filter, Reduce Functions</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Regular Expressions (Regex)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Multithreading & Multiprocessing</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Asyncio & Async Programming</span></div>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">04</div>
+                        <h3>Data Structures & Algorithms</h3>
+                    </div>
+                    <div class="module-duration">1 Month</div>
+                </div>
+                <p class="module-description">Learn essential data structures and algorithms to solve complex problems and ace technical interviews.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Arrays & Linked Lists</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Stacks & Queues</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Trees & Binary Search Trees</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Hash Tables & Sets</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Sorting Algorithms</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Searching Algorithms</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Recursion & Dynamic Programming</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Time & Space Complexity</span></div>
+                </div>
+            </div>
+
+            <!-- Module 5 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">05</div>
+                        <h3>Database Management & SQL</h3>
+                    </div>
+                    <div class="module-duration">2 Weeks</div>
+                </div>
+                <p class="module-description">Work with databases using SQL and Python libraries to store, retrieve, and manipulate data efficiently.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>SQL Fundamentals (CRUD)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>MySQL & PostgreSQL</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Database Design & Normalization</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Joins & Subqueries</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Python DB Connectivity (sqlite3)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>SQLAlchemy ORM</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>NoSQL Basics (MongoDB)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>PyMongo Library</span></div>
+                </div>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">06</div>
+                        <h3>Web Development with Django</h3>
+                    </div>
+                    <div class="module-duration">1.5 Months</div>
+                </div>
+                <p class="module-description">Build full-stack web applications using Django framework with authentication, databases, and deployment.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Django Architecture (MTV Pattern)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Models, Views, & Templates</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>URL Routing & Forms</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Authentication & Authorization</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Django ORM & Migrations</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Django Admin Panel</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Django REST Framework</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Deployment & Production Setup</span></div>
+                </div>
+            </div>
+
+            <!-- Module 7 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">07</div>
+                        <h3>Flask & API Development</h3>
+                    </div>
+                    <div class="module-duration">3 Weeks</div>
+                </div>
+                <p class="module-description">Create lightweight web applications and RESTful APIs using Flask micro-framework.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Flask Fundamentals & Routing</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Templates with Jinja2</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Flask Forms & Validation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>RESTful API Design</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>JWT Authentication</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Flask-SQLAlchemy Integration</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>API Documentation (Swagger)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Flask Deployment</span></div>
+                </div>
+            </div>
+
+            <!-- Module 8 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">08</div>
+                        <h3>Data Analysis & Visualization</h3>
+                    </div>
+                    <div class="module-duration">1 Month</div>
+                </div>
+                <p class="module-description">Analyze and visualize data using popular Python libraries for data science and analytics.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>NumPy Arrays & Operations</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Pandas DataFrames & Series</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Data Cleaning & Preprocessing</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Data Aggregation & Grouping</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Matplotlib Plotting</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Seaborn Visualizations</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Working with CSV & Excel Files</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Statistical Analysis Basics</span></div>
+                </div>
+            </div>
+
+            <!-- Module 9 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">09</div>
+                        <h3>Web Scraping & Automation</h3>
+                    </div>
+                    <div class="module-duration">2 Weeks</div>
+                </div>
+                <p class="module-description">Automate tasks and extract data from websites using Python automation tools and libraries.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>BeautifulSoup for Web Scraping</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Requests Library & HTTP</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Selenium WebDriver Automation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Scrapy Framework</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Handling Dynamic Content</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Data Extraction Techniques</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Task Automation Scripts</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Email Automation & Scheduling</span></div>
+                </div>
+            </div>
+
+            <!-- Module 10 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">10</div>
+                        <h3>Machine Learning Fundamentals</h3>
+                    </div>
+                    <div class="module-duration">1 Month</div>
+                </div>
+                <p class="module-description">Introduction to machine learning concepts and building predictive models using scikit-learn.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>ML Concepts & Workflow</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Supervised vs Unsupervised</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Linear & Logistic Regression</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Decision Trees & Random Forests</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>K-Means Clustering</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Model Evaluation & Metrics</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Feature Engineering</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Scikit-learn Library</span></div>
+                </div>
+            </div>
+
+            <!-- Module 11 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">11</div>
+                        <h3>Testing & Version Control</h3>
+                    </div>
+                    <div class="module-duration">2 Weeks</div>
+                </div>
+                <p class="module-description">Learn testing methodologies and version control to write reliable, maintainable code.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Unit Testing with unittest</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>pytest Framework</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Test-Driven Development (TDD)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Code Coverage & Mocking</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Git Fundamentals</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>GitHub Collaboration</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Branching & Merging</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>CI/CD Basics for Python</span></div>
+                </div>
+            </div>
+
+            <!-- Module 12 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">12</div>
+                        <h3>Capstone Projects & Placement Prep</h3>
+                    </div>
+                    <div class="module-duration">3 Weeks</div>
+                </div>
+                <p class="module-description">Build real-world Python projects and prepare for technical interviews with coding challenges and mock sessions.</p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>E-Commerce Web Application</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Data Analysis Dashboard</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>REST API with Authentication</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Web Scraping & Automation Project</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Python Coding Challenges</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Resume Building for Python Devs</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Mock Technical Interviews</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Job Referrals & Career Guidance</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer"></div>
+
+    <script>
+        // Load header and footer
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Top Talent | TechWell</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --gradient-main: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+            padding-top: 80px; /* Header space */
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .reveal {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        /* --- Common --- */
+        section { padding: 60px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2 span {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Hero Section --- */
+        .hire-hero {
+            position: relative;
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.85)), 
+                        url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2684&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            max-width: 90%;
+        }
+
+        .benefit-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: #e2e8f0;
+        }
+
+        .benefit-item i {
+            color: #4ade80;
+            font-size: 1.2rem;
+            background: rgba(74, 222, 128, 0.2);
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        /* --- Glass Form --- */
+        .hire-form-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .hire-form-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .form-group { margin-bottom: 15px; }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #60a5fa;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.2);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4); }
+
+        /* --- Hiring Process --- */
+        .process-section { background: white; }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .step-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #f1f5f9;
+            transition: 0.3s;
+            position: relative;
+        }
+        
+        .step-card:hover { transform: translateY(-10px); border-color: #bfdbfe; background: white; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            width: 36px; height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            margin: 20px 0;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .step-card h4 { font-size: 1.25rem; font-weight: 700; color: var(--primary); }
+
+        /* --- Domains --- */
+        .domains-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .domain-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 1px solid #f1f5f9;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            cursor: default;
+        }
+
+        .domain-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .domain-icon {
+            width: 50px; height: 50px;
+            background: #eff6ff;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .domain-card:hover .domain-icon { background: var(--accent); color: white; }
+        .domain-name { font-weight: 700; font-size: 1.1rem; color: #334155; }
+
+        /* --- Testimonials --- */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid #f1f5f9;
+            position: relative;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            color: #e2e8f0;
+        }
+
+        .test-text {
+            font-size: 1.1rem;
+            color: #475569;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .test-author h4 { font-weight: 700; color: var(--primary); }
+        .test-author p { color: #94a3b8; font-size: 0.9rem; }
+
+        @media (max-width: 900px) {
+            .hero-layout { grid-template-columns: 1fr; gap: 40px; }
+            .hero-content { text-align: center; }
+            .benefit-list { justify-content: center; }
+            .benefit-item { justify-content: flex-start; }
+            .hire-form-card { padding: 30px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="hire-hero">
+        <div class="container">
+            <div class="hero-layout">
+                <!-- Content -->
+                <div class="hero-content reveal">
+                    <h1>Build Your Dream Team with <span>Proven</span>Talent</h1>
+                    <p>
+                        Skip the hiring fatigue. Access a curated pool of 10,000+ job-ready developers, designers, and engineers who are trained to deliver from Day 1.
+                    </p>
+                    <div class="benefit-list">
+                        <div class="benefit-item">
+                            <i class="fas fa-check"></i> Zero Hiring Cost
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check"></i> Pre-Vetted Candidates
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check"></i> Immediate Joiners
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check"></i> 100% Skill Guarantee
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glass Form -->
+                <div class="hire-form-card reveal" style="animation-delay: 0.2s;">
+                    <h3>Request Talent Profile</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Work Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Company Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-input" placeholder="Phone Number" required>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            Get Candidates Now <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hiring Process -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Seamless <span>Hiring Process</span></h2>
+                <p style="color: #64748b; margin-top: 10px;">From requirement to onboarding in 4 simple steps</p>
+            </div>
+            <div class="process-steps">
+                <div class="step-card reveal">
+                    <div class="step-number">1</div>
+                    <i class="fas fa-file-signature step-icon"></i>
+                    <h4>Share Requirements</h4>
+                    <p style="color:#64748b; margin-top:10px;">Tell us about the role, tech stack, and experience needed.</p>
+                </div>
+                <div class="step-card reveal" style="animation-delay: 0.1s;">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-users-cog step-icon"></i>
+                    <h4>We Shortlist</h4>
+                    <p style="color:#64748b; margin-top:10px;">Our AI matches the best profiles from our trained pool.</p>
+                </div>
+                <div class="step-card reveal" style="animation-delay: 0.2s;">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-video step-icon"></i>
+                    <h4>Interview</h4>
+                    <p style="color:#64748b; margin-top:10px;">Evaluate candidates through your standard interview process.</p>
+                </div>
+                <div class="step-card reveal" style="animation-delay: 0.3s;">
+                    <div class="step-number">4</div>
+                    <i class="fas fa-rocket step-icon"></i>
+                    <h4>Onboard</h4>
+                    <p style="color:#64748b; margin-top:10px;">Select the best and onboard them. No hiring fees.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Domains -->
+    <section style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Talent Available Across <span>Domains</span></h2>
+            </div>
+            <div class="domains-grid">
+                <div class="domain-card reveal">
+                    <div class="domain-icon"><i class="fas fa-code"></i></div>
+                    <div class="domain-name">Full Stack Development</div>
+                </div>
+                <div class="domain-card reveal">
+                    <div class="domain-icon"><i class="fas fa-database"></i></div>
+                    <div class="domain-name">Data Science & AI</div>
+                </div>
+                <div class="domain-card reveal">
+                    <div class="domain-icon"><i class="fas fa-cloud"></i></div>
+                    <div class="domain-name">Cloud Computing</div>
+                </div>
+                <div class="domain-card reveal">
+                    <div class="domain-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="domain-name">App Development</div>
+                </div>
+                <div class="domain-card reveal">
+                    <div class="domain-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="domain-name">Cyber Security</div>
+                </div>
+                <div class="domain-card reveal">
+                    <div class="domain-icon"><i class="fas fa-paint-brush"></i></div>
+                    <div class="domain-name">UI/UX Design</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trusted by <span>Hiring Partners</span></h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card reveal">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="test-text">"The quality of candidates from TechWell is outstanding. They are not just technically sound but also have great professional etiquette. We closed 5 positions in a week!"</p>
+                    <div class="test-author">
+                        <h4>Priya Sharma</h4>
+                        <p>HR Director, FinTech Solutions</p>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal" style="animation-delay: 0.2s;">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="test-text">"What impressed us most was the 'Day 1 Ready' attitude. The students were well-versed with modern tools like Git, Jira, and Docker. Highly recommended."</p>
+                    <div class="test-author">
+                        <h4>Rahul Verma</h4>
+                        <p>CTO, GreenLeaf Systems</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script>
+        // Header & Footer Loader
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => response.text())
+                .then(data => {
+                    const element = document.getElementById(elementId);
+                    if (element) {
+                        element.innerHTML = data;
+                        // Execute scripts in loaded HTML
+                        const scripts = element.getElementsByTagName("script");
+                        for (let i = 0; i < scripts.length; i++) {
+                            const script = document.createElement("script");
+                            if (scripts[i].src) {
+                                script.src = scripts[i].src;
+                                script.async = false;
+                            } else {
+                                script.textContent = scripts[i].textContent;
+                            }
+                            document.body.appendChild(script);
+                        }
+                    }
+                })
+                .catch(error => console.error('Error loading HTML:', error));
+        }
+
+        loadHTML('header', 'header.html');
+        loadHTML('footer', 'footer.html');
+    </script>
+</body>
+</html>

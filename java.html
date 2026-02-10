@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Full Stack Development Course | TechWell</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .course-hero {
+            padding: 100px 20px 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 30px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meta-item i {
+            color: #00A9CE;
+            font-size: 20px;
+        }
+
+        .meta-item span {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 169, 206, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 16px 32px;
+            background: white;
+            color: #00A9CE;
+            border: 2px solid #00A9CE;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #00A9CE;
+            color: white;
+        }
+
+        .hero-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overview Section */
+        .overview {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .overview-card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid #00A9CE;
+            transition: all 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 169, 206, 0.15);
+        }
+
+        .overview-card i {
+            font-size: 32px;
+            color: #00A9CE;
+            margin-bottom: 15px;
+        }
+
+        .overview-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .overview-card p {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #f8fafc, #ffffff);
+        }
+
+        .module {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .module-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .module-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00A9CE, #0066CC);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .module-title h3 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .module-duration {
+            background: #00A9CE;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .module-description {
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .topics-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: #e0f2fe;
+            transform: translateX(5px);
+        }
+
+        .topic-item i {
+            color: #00A9CE;
+            font-size: 16px;
+        }
+
+        .topic-item span {
+            font-size: 15px;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .module-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="course-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Master <span class="hero-highlight">Java Full Stack</span> Development</h1>
+                
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span><strong>6 Months</strong> Duration</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span><strong>Small Batches</strong> (15-20 students)</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-certificate"></i>
+                        <span><strong>Industry Certificate</strong></span>
+                    </div>
+                </div>
+
+                <p class="hero-description">
+                    Become a complete Full Stack Java Developer with hands-on training in Core Java, Advanced Java, Spring Boot, Hibernate, React, and database technologies. Build real-world projects and get 100% placement assistance.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="enroll.html" class="btn-primary">Enroll Now</a>
+                    <a href="#curriculum" class="btn-secondary">View Curriculum</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80" alt="Java Programming">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Course Overview</h2>
+                <p>A comprehensive 6-month program covering everything from basics to advanced enterprise Java development</p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Core Java Fundamentals</h3>
+                    <p>Master OOP concepts, data structures, exception handling, and multithreading</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Database Management</h3>
+                    <p>Learn SQL, MySQL, MongoDB, and database design principles</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-server"></i>
+                    <h3>Backend Development</h3>
+                    <p>Build REST APIs with Spring Boot, Hibernate, and microservices architecture</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Frontend Technologies</h3>
+                    <p>Create dynamic UIs with HTML, CSS, JavaScript, and React</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Live Projects</h3>
+                    <p>Work on 5+ real-world projects including e-commerce and banking apps</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Placement Support</h3>
+                    <p>Resume building, mock interviews, and job referrals to top companies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum" id="curriculum">
+        <div class="container">
+            <div class="section-header">
+                <h2>Detailed Curriculum</h2>
+                <p>Structured learning path from fundamentals to advanced enterprise development</p>
+            </div>
+
+            <!-- Module 1 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">01</div>
+                        <h3>Core Java Fundamentals</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 2 Months</div>
+                </div>
+                <p class="module-description">
+                    Build a strong foundation in Java programming with object-oriented principles, syntax, and core concepts essential for every Java developer.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Java Basics & Syntax</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>OOP Concepts (Classes, Objects, Inheritance)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Polymorphism & Abstraction</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Exception Handling</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Collections Framework</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Multithreading & Concurrency</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>File I/O Operations</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Java 8 Features (Lambda, Streams)</span></div>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">02</div>
+                        <h3>Database & SQL</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Master database concepts, SQL queries, and learn to design efficient database schemas for enterprise applications.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Database Fundamentals & RDBMS</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>SQL Queries (SELECT, INSERT, UPDATE, DELETE)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Joins & Subqueries</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Normalization & Database Design</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>MySQL & PostgreSQL</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>NoSQL Basics (MongoDB)</span></div>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">03</div>
+                        <h3>Advanced Java & J2EE</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1 Month</div>
+                </div>
+                <p class="module-description">
+                    Dive into web development with Servlets, JSP, and enterprise Java technologies for building scalable web applications.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Servlets & JSP</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>HTTP Protocol & Web Architecture</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Session Management</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Filters & Listeners</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>JDBC & Connection Pooling</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>MVC Architecture</span></div>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">04</div>
+                        <h3>Spring Framework & Spring Boot</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1.5 Months</div>
+                </div>
+                <p class="module-description">
+                    Learn the industry-standard Spring ecosystem to build enterprise-grade applications with dependency injection, AOP, and RESTful services.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Spring Core (IoC & DI)</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Spring Boot Fundamentals</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Spring MVC</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Spring Data JPA & Hibernate</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>RESTful Web Services</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Spring Security & JWT</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Microservices Architecture</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Spring Cloud Basics</span></div>
+                </div>
+            </div>
+
+            <!-- Module 5 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">05</div>
+                        <h3>Frontend Development</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 1 Month</div>
+                </div>
+                <p class="module-description">
+                    Build modern, responsive user interfaces with HTML, CSS, JavaScript, and React to complement your backend skills.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>HTML5 & Semantic Markup</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>CSS3 & Responsive Design</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>JavaScript ES6+</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>DOM Manipulation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>React Fundamentals</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Component-Based Architecture</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>State Management & Hooks</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>API Integration with Axios</span></div>
+                </div>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">06</div>
+                        <h3>DevOps & Deployment</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 2 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Learn version control, CI/CD, containerization, and cloud deployment to prepare for real-world development workflows.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Git & GitHub</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Maven & Build Tools</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Docker Basics</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Jenkins CI/CD</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>AWS Deployment Basics</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Server Configuration</span></div>
+                </div>
+            </div>
+
+            <!-- Module 7 -->
+            <div class="module">
+                <div class="module-header">
+                    <div class="module-title">
+                        <div class="module-number">07</div>
+                        <h3>Capstone Projects & Placement Prep</h3>
+                    </div>
+                    <div class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</div>
+                </div>
+                <p class="module-description">
+                    Apply all your skills in real-world projects and prepare for interviews with resume building, mock interviews, and coding challenges.
+                </p>
+                <div class="topics-list">
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>E-Commerce Application</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Banking Management System</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Blog Platform with CRUD</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Data Structures & Algorithms</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Resume Building</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Mock Technical Interviews</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Aptitude & HR Preparation</span></div>
+                    <div class="topic-item"><i class="fas fa-check-circle"></i><span>Job Referrals & Support</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer"></div>
+
+    <script>
+        // Load header and footer
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+</html>

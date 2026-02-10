@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <title>Enroll Now | TechWell</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 
 <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -14,112 +16,235 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: #0f172a;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(79, 70, 229, 0.15) 0%, transparent 40%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* MODAL OVERLAY */
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    padding: 20px;
 }
 
 /* MODAL BOX */
 .modal {
-    background: #ffffff;
+    background: white;
     width: 100%;
-    max-width: 480px;
-    border-radius: 12px;
+    max-width: 500px;
+    border-radius: 24px;
     padding: 30px;
     position: relative;
-    animation: fadeIn 0.3s ease;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* CLOSE ICON */
 .modal-close {
     position: absolute;
-    top: 14px;
-    right: 16px;
-    font-size: 22px;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    background: #f1f5f9;
+    color: #64748b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    color: #555;
+    transition: all 0.2s;
+    font-size: 1rem;
 }
 
-/* HEADING */
-.modal h2 {
-    text-align: center;
-    margin-bottom: 8px;
-    color: #0a2540;
+.modal-close:hover {
+    background: #fee2e2;
+    color: #ef4444;
 }
 
-.modal p {
+/* HEADER */
+.modal-header {
     text-align: center;
     margin-bottom: 20px;
-    color: #555;
-    font-size: 14px;
 }
 
-/* FORM */
+.modal-header h2 {
+    font-size: 1.6rem;
+    color: #0f172a;
+    margin-bottom: 4px;
+    font-weight: 800;
+}
+
+.modal-header p {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+.badge-sub {
+    display: inline-block;
+    background: #eef2ff;
+    color: #4f46e5;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+/* FORM FIELDS */
 .form-group {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 6px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #d1d5db;
-    font-size: 14px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    background: #f8fafc;
+    font-size: 0.95rem;
+    color: #1e293b;
+    transition: all 0.3s;
+    font-family: inherit;
 }
 
-textarea {
-    resize: none;
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* RADIO BUTTONS */
+.radio-group {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.radio-option {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    background: white;
+    font-weight: 600;
+    color: #64748b;
+    transition: all 0.2s;
+}
+
+.radio-option input:checked + .radio-card {
+    border-color: #3b82f6;
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.radio-card i {
+    font-size: 1.1rem;
 }
 
 /* BUTTONS */
 .form-actions {
     display: flex;
     gap: 12px;
-    margin-top: 10px;
+    margin-top: 18px;
 }
 
 .btn-primary {
-    flex: 1;
-    background: #2563eb;
-    color: #fff;
-    border: none;
+    width: 100%;
     padding: 12px;
-    border-radius: 6px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
-    font-size: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
 }
 
 .btn-cancel {
-    flex: 1;
-    background: #e5e7eb;
-    color: #111;
-    border: none;
-    padding: 12px;
-    border-radius: 6px;
+    background: transparent;
+    color: #64748b;
+    border: 1px solid transparent;
+    font-weight: 600;
+    padding: 14px;
+    border-radius: 12px;
     cursor: pointer;
+    transition: all 0.2s;
 }
 
-/* ANIMATION */
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+.btn-cancel:hover {
+    color: #ef4444;
+    background: #fef2f2;
 }
 
 /* MOBILE */
 @media(max-width: 480px) {
     .modal {
-        margin: 10px;
+        padding: 30px 20px;
     }
 }
 </style>
@@ -130,27 +255,35 @@ textarea {
 <!-- MODAL -->
 <div class="modal-overlay">
     <div class="modal">
-        <span class="modal-close" onclick="goHome()">✕</span>
+        <div class="modal-close" onclick="goHome()"><i class="fas fa-times"></i></div>
 
-        <h2>Enroll Now</h2>
-        <p>Fill in your details and our team will contact you</p>
+        <div class="modal-header">
+            <span class="badge-sub">Join TechWell</span>
+            <h2>Enroll Now</h2>
+            <p>Start your journey with our industry-led courses.</p>
+        </div>
 
         <form id="enrollForm">
             <div class="form-group">
-                <input type="text" name="name" placeholder="Full Name" required>
+                <label>Full Name</label>
+                <input type="text" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div>
+                    <label>Phone</label>
+                    <input type="tel" name="phone" placeholder="Enter mobile no" required>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                </div>
             </div>
 
             <div class="form-group">
-                <input type="email" name="email" placeholder="Email Address" required>
-            </div>
-
-            <div class="form-group">
-                <input type="tel" name="phone" placeholder="Mobile Number" required>
-            </div>
-
-            <div class="form-group">
+                <label>Which course are you interested in?</label>
                 <select name="course" required>
-                    <option value="">Select Course</option>
+                    <option value="">Select a Course</option>
                     <option>Java Programming</option>
                     <option>Python Programming</option>
                     <option>DevOps</option>
@@ -164,12 +297,33 @@ textarea {
             </div>
 
             <div class="form-group">
-                <textarea name="message" rows="3" placeholder="Your message (optional)"></textarea>
+                <label>Mode of Training</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="training_mode" value="Online" required checked>
+                        <div class="radio-card">
+                            <i class="fas fa-wifi"></i> Online
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="training_mode" value="Offline" required>
+                        <div class="radio-card">
+                            <i class="fas fa-building"></i> Offline
+                        </div>
+                    </label>
+                </div>
             </div>
 
-            <div class="form-actions">
-                <button type="submit" class="btn-primary">Submit</button>
-                <button type="button" class="btn-cancel" onclick="goHome()">Cancel</button>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea name="message" rows="3" placeholder="Enter your message..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">
+                Submit Enrollment <i class="fas fa-arrow-right"></i>
+            </button>
+            <div style="text-align: center; margin-top: 15px;">
+                <button type="button" class="btn-cancel" onclick="goHome()">Go Back to Home</button>
             </div>
         </form>
     </div>
@@ -190,7 +344,7 @@ document.getElementById("enrollForm").addEventListener("submit", function(e){
         "YOUR_TEMPLATE_ID",  // 🔴 replace
         this
     ).then(function(){
-        alert("Thank you! We will contact you soon.");
+        alert("Thank you! enrollment received. We will contact you soon.");
         window.location.href = "index.html";
     }, function(error){
         alert("Failed to send. Please try again.");
